@@ -4,11 +4,37 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 
 const ComingSoon = ({ page }) => (
-  <div className="min-h-screen flex items-center justify-center">
+  <div
+    className="min-h-screen flex items-center justify-center"
+    style={{ background: "linear-gradient(150deg, #060818 0%, #0c1a3a 40%, #0a0a0a 100%)" }}
+  >
     <div className="text-center">
-      <p className="section-label mb-2">Coming Soon</p>
-      <h1 className="font-display text-white text-5xl">{page}</h1>
-      <p className="text-white/40 font-body mt-3 text-sm">This page will be built in the coming days.</p>
+      <p
+        style={{
+          color: "#D4AF37",
+          fontFamily: "Cormorant Garamond, serif",
+          fontStyle: "italic",
+          fontSize: "1.1rem",
+          letterSpacing: "0.15em",
+          textTransform: "uppercase",
+          marginBottom: "8px",
+        }}
+      >
+        Coming Soon
+      </p>
+      <h1
+        style={{
+          fontFamily: "Playfair Display, serif",
+          color: "white",
+          fontSize: "3rem",
+          fontWeight: "bold",
+        }}
+      >
+        {page}
+      </h1>
+      <p style={{ color: "rgba(255,255,255,0.4)", fontFamily: "DM Sans, sans-serif", marginTop: "12px", fontSize: "0.875rem" }}>
+        This page will be built in the coming days.
+      </p>
     </div>
   </div>
 );
@@ -16,7 +42,7 @@ const ComingSoon = ({ page }) => (
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-black">
+      <div style={{ minHeight: "100vh", backgroundColor: "#0a0a0a" }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
