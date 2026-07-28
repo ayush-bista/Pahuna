@@ -65,8 +65,8 @@ export default function HotelsPage() {
     <div style={{ backgroundColor: "#FAFAF8", minHeight: "100vh", paddingTop: "80px" }}>
 
       {/* ── PAGE HEADER ── */}
-      <div style={{ backgroundColor: "white", borderBottom: "1px solid #E8E4DC", padding: "36px 80px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ backgroundColor: "white", borderBottom: "1px solid #E8E4DC", padding: "36px 0" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }}>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "8px" }}>
             Browse
           </p>
@@ -81,7 +81,7 @@ export default function HotelsPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 80px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: "40px", alignItems: "start" }}>
 
           {/* ── SIDEBAR FILTERS ── */}
