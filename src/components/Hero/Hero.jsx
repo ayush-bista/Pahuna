@@ -1,131 +1,372 @@
-import { Shield, Clock, Star, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
-import { stats } from "../../data/hotels";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MapPin, Calendar, Users, Search, Star, ArrowRight } from "lucide-react";
+import { destinations } from "../../data/hotels";
 
 export default function Hero() {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({ destination: "", checkIn: "", checkOut: "", guests: 2 });
+
+  const handleSearch = () => {
+    const params = new URLSearchParams(form);
+    navigate(`/hotels?${params.toString()}`);
+  };
+
   return (
-    <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: "linear-gradient(150deg, #060818 0%, #0c1a3a 40%, #1a0a0e 70%, #0a0a0a 100%)" }}
-    >
-      {/* Background layers */}
-      <div className="absolute inset-0 pointer-events-none">
+    <div style={{ backgroundColor: "#FAFAF8" }}>
 
-        {/* Mountain SVG silhouette */}
-        <svg className="absolute bottom-0 left-0 right-0 w-full opacity-20" viewBox="0 0 1440 400" preserveAspectRatio="none">
-          <path
-            d="M0,400 L0,280 L120,180 L200,220 L320,100 L440,160 L520,80 L640,140 L720,40 L800,120 L880,60 L960,130 L1080,200 L1160,140 L1280,220 L1360,160 L1440,200 L1440,400 Z"
-            fill="url(#mountainGrad)"
-          />
-          <defs>
-            <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#003893" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#0a0a0a" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
+      {/* ── HERO SPLIT ── */}
+      <section style={{
+        minHeight: "100vh",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        paddingTop: "80px",
+      }}>
 
-        {/* Glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-red-900/15 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-yellow-900/10 rounded-full blur-[80px] animate-pulse" />
-
-        {/* Floating particles */}
-        {[...Array(18)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-20"
-            style={{
-              left: `${(i * 37 + 5) % 100}%`,
-              top: `${(i * 23 + 10) % 100}%`,
-              animation: `float ${4 + (i % 4)}s ease-in-out infinite`,
-              animationDelay: `${(i * 0.4) % 4}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 text-center px-6 pt-28 pb-12 max-w-6xl mx-auto w-full">
-
-        {/* Top badge */}
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
-          <Star size={12} className="text-nepal-gold fill-nepal-gold" />
-          <span className="text-white/80 font-body text-xs tracking-widest uppercase">
-            Nepal's #1 Hotel Booking Platform
-          </span>
-          <Star size={12} className="text-nepal-gold fill-nepal-gold" />
-        </div>
-
-        {/* Headline */}
-        <h1
-          className="font-display text-white mb-4 leading-none"
-          style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
-        >
-          Discover Nepal's
-          <br />
-          <span className="text-gradient italic"> Finest Stays</span>
-        </h1>
-
-        <p className="font-body text-white/60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          From Himalayan luxury lodges to lakeside retreats — book your perfect escape
-          across Nepal's most breathtaking destinations.
-        </p>
-
-        {/* Search Bar */}
-        <div className="mb-6">
-          <SearchBar />
-        </div>
-
-        {/* Quick destination filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {["Kathmandu", "Pokhara", "Chitwan", "Nagarkot", "Mustang"].map((dest) => (
-            <Link
-              key={dest}
-              to={`/hotels?destination=${dest}`}
-              className="glass hover:bg-white/15 text-white/70 hover:text-white font-body text-xs px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-yellow-600/50"
-            >
-              {dest}
-            </Link>
-          ))}
-        </div>
-
-        {/* Trust signals */}
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
-          <div className="flex items-center gap-2 text-white/50 text-xs font-body">
-            <Shield size={14} className="text-nepal-gold" />
-            Secure Booking
+        {/* Left — editorial text side */}
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "80px 64px 80px 80px",
+        }}>
+          {/* Eyebrow */}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "28px" }}>
+            <div style={{ width: "32px", height: "1px", backgroundColor: "#B85C38" }} />
+            <span style={{
+              fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600,
+              letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38",
+            }}>
+              Nepal's Hotel Platform
+            </span>
           </div>
-          <div className="flex items-center gap-2 text-white/50 text-xs font-body">
-            <Clock size={14} className="text-nepal-gold" />
-            Instant Confirmation
-          </div>
-          <div className="flex items-center gap-2 text-white/50 text-xs font-body">
-            <Star size={14} className="text-nepal-gold fill-nepal-gold" />
-            Verified Reviews
-          </div>
-        </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-display text-3xl font-bold text-gradient">{stat.value}</p>
-              <p className="font-body text-white/40 text-xs mt-1 tracking-wider uppercase">{stat.label}</p>
+          {/* Headline */}
+          <h1 style={{
+            fontFamily: "Fraunces, serif",
+            fontSize: "clamp(44px, 5vw, 72px)",
+            fontWeight: 300,
+            lineHeight: 1.08,
+            color: "#1A1A1A",
+            letterSpacing: "-1.5px",
+            marginBottom: "24px",
+          }}>
+            Stay somewhere<br />
+            <em style={{ fontStyle: "italic", color: "#B85C38" }}>worth remembering</em>
+          </h1>
+
+          <p style={{
+            fontFamily: "Inter, sans-serif", fontSize: "16px", lineHeight: 1.7,
+            color: "#6B6B6B", maxWidth: "420px", marginBottom: "40px",
+          }}>
+            Handpicked hotels across Nepal's most remarkable destinations —
+            from Kathmandu's ancient lanes to Mustang's canyon walls.
+          </p>
+
+          {/* Trust row */}
+          <div style={{ display: "flex", gap: "24px", marginBottom: "48px" }}>
+            {[
+              { n: "150+", l: "Hotels" },
+              { n: "6", l: "Destinations" },
+              { n: "4.8★", l: "Avg rating" },
+            ].map((s) => (
+              <div key={s.l}>
+                <p style={{ fontFamily: "Fraunces, serif", fontSize: "28px", fontWeight: 600, color: "#1A1A1A", lineHeight: 1 }}>{s.n}</p>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B", marginTop: "4px" }}>{s.l}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Search card */}
+          <div style={{
+            backgroundColor: "white",
+            border: "1px solid #E8E4DC",
+            borderRadius: "16px",
+            padding: "20px",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
+          }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr auto", gap: "12px", alignItems: "end" }}>
+
+              {/* Destination */}
+              <div>
+                <label style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "1.5px", textTransform: "uppercase", color: "#6B6B6B", display: "block", marginBottom: "8px" }}>
+                  Where
+                </label>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <MapPin size={15} color="#B85C38" />
+                  <select
+                    value={form.destination}
+                    onChange={(e) => setForm({ ...form, destination: e.target.value })}
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#1A1A1A", border: "none", background: "none", outline: "none", width: "100%", cursor: "pointer" }}
+                  >
+                    <option value="">Any destination</option>
+                    {destinations.map((d) => (
+                      <option key={d.id} value={d.name}>{d.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Check in */}
+              <div>
+                <label style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "1.5px", textTransform: "uppercase", color: "#6B6B6B", display: "block", marginBottom: "8px" }}>
+                  Check in
+                </label>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Calendar size={15} color="#B85C38" />
+                  <input
+                    type="date"
+                    value={form.checkIn}
+                    onChange={(e) => setForm({ ...form, checkIn: e.target.value })}
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#1A1A1A", border: "none", background: "none", outline: "none", width: "100%" }}
+                  />
+                </div>
+              </div>
+
+              {/* Check out */}
+              <div>
+                <label style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "1.5px", textTransform: "uppercase", color: "#6B6B6B", display: "block", marginBottom: "8px" }}>
+                  Check out
+                </label>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Calendar size={15} color="#B85C38" />
+                  <input
+                    type="date"
+                    value={form.checkOut}
+                    onChange={(e) => setForm({ ...form, checkOut: e.target.value })}
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#1A1A1A", border: "none", background: "none", outline: "none", width: "100%" }}
+                  />
+                </div>
+              </div>
+
+              {/* Search button */}
+              <button
+                onClick={handleSearch}
+                style={{
+                  backgroundColor: "#B85C38", color: "white",
+                  border: "none", borderRadius: "10px",
+                  padding: "12px 20px", cursor: "pointer",
+                  display: "flex", alignItems: "center", gap: "8px",
+                  fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <Search size={15} />
+                Search
+              </button>
             </div>
+
+            {/* Guests row */}
+            <div style={{ borderTop: "1px solid #E8E4DC", marginTop: "16px", paddingTop: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Users size={14} color="#6B6B6B" />
+              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B" }}>Guests:</span>
+              <button onClick={() => setForm({ ...form, guests: Math.max(1, form.guests - 1) })} style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}>−</button>
+              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500, color: "#1A1A1A", minWidth: "20px", textAlign: "center" }}>{form.guests}</span>
+              <button onClick={() => setForm({ ...form, guests: Math.min(12, form.guests + 1) })} style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}>+</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right — photo collage side */}
+        <div style={{ position: "relative", overflow: "hidden" }}>
+
+          {/* Main big photo */}
+          <img
+            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&q=85"
+            alt="Pokhara lake"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+
+          {/* Overlay gradient — subtle bottom fade */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to bottom, transparent 60%, rgba(26,26,26,0.35) 100%)",
+          }} />
+
+          {/* Floating review card */}
+          <div style={{
+            position: "absolute", bottom: "40px", left: "32px",
+            backgroundColor: "white", borderRadius: "14px",
+            padding: "16px 20px", boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+            maxWidth: "240px",
+          }}>
+            <div style={{ display: "flex", gap: "3px", marginBottom: "8px" }}>
+              {[1,2,3,4,5].map((i) => (
+                <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />
+              ))}
+            </div>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#1A1A1A", lineHeight: 1.5, marginBottom: "10px" }}>
+              "The most peaceful place I've ever stayed. Woke up to Annapurna in the clouds."
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div style={{ width: "28px", height: "28px", borderRadius: "50%", backgroundColor: "#E8E4DC", overflow: "hidden" }}>
+                <img src="https://i.pravatar.cc/28?img=47" alt="user" style={{ width: "100%", height: "100%" }} />
+              </div>
+              <div>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "#1A1A1A" }}>Sarah K.</p>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", color: "#6B6B6B" }}>Stayed in Pokhara</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating destination badge */}
+          <div style={{
+            position: "absolute", top: "32px", right: "32px",
+            backgroundColor: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)",
+            borderRadius: "10px", padding: "10px 16px",
+          }}>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", color: "#6B6B6B", marginBottom: "2px" }}>Currently viewing</p>
+            <p style={{ fontFamily: "Fraunces, serif", fontSize: "16px", fontWeight: 600, color: "#1A1A1A" }}>Pokhara, Nepal</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DESTINATIONS STRIP ── */}
+      <section style={{ backgroundColor: "white", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "20px 80px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", gap: "12px", overflowX: "auto" }}>
+          <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B", whiteSpace: "nowrap", marginRight: "8px" }}>Popular:</span>
+          {destinations.map((d) => (
+            
+              key={d.id}
+              href={`/hotels?destination=${d.name}`}
+              style={{
+                fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 500,
+                color: "#1A1A1A", whiteSpace: "nowrap", padding: "6px 16px",
+                borderRadius: "999px", border: "1px solid #E8E4DC",
+                backgroundColor: "#FAFAF8", transition: "border-color 0.2s",
+              }}
+            >
+              {d.name}
+            </a>
           ))}
         </div>
+      </section>
+
+      {/* ── DESTINATIONS GRID ── */}
+      <section style={{ padding: "80px 80px", maxWidth: "1360px", margin: "0 auto" }}>
+
+        {/* Section header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px" }}>
+          <div>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "10px" }}>
+              Where to go
+            </p>
+            <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "40px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", lineHeight: 1.1 }}>
+              Every corner<br />of Nepal
+            </h2>
+          </div>
+          
+            href="/hotels"
+            style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#B85C38", fontWeight: 500 }}
+          >
+            View all hotels <ArrowRight size={15} />
+          </a>
+        </div>
+
+        {/* Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+          {destinations.map((dest, i) => (
+            <DestCard key={dest.id} dest={dest} tall={i === 0 || i === 3} />
+          ))}
+        </div>
+      </section>
+
+      {/* ── WHY NEPALSTAY ── */}
+      <section style={{ backgroundColor: "#F2EDE8", padding: "80px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+            <div>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "14px" }}>
+                Why book with us
+              </p>
+              <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "42px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: "28px" }}>
+                Built for travellers<br /><em>who care about detail</em>
+              </h2>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#6B6B6B", lineHeight: 1.75, marginBottom: "36px" }}>
+                Every hotel on NepalStay is reviewed by our team on the ground.
+                No filler listings, no inflated ratings — just places we'd send our own family to.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                {[
+                  { title: "Hand-verified listings", desc: "Every property is physically visited and reviewed." },
+                  { title: "Local knowledge", desc: "Tips and context from people who actually live here." },
+                  { title: "No hidden fees", desc: "The price you see is the price you pay. Always." },
+                ].map((f) => (
+                  <div key={f.title} style={{ display: "flex", gap: "16px" }}>
+                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#B85C38", marginTop: "7px", flexShrink: 0 }} />
+                    <div>
+                      <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "#1A1A1A", marginBottom: "4px" }}>{f.title}</p>
+                      <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>{f.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ position: "relative" }}>
+              <img
+                src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=700&q=85"
+                alt="Kathmandu"
+                style={{ width: "100%", height: "480px", objectFit: "cover", borderRadius: "16px" }}
+              />
+              <div style={{
+                position: "absolute", bottom: "-24px", left: "-24px",
+                backgroundColor: "white", borderRadius: "14px", padding: "20px 24px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              }}>
+                <p style={{ fontFamily: "Fraunces, serif", fontSize: "28px", fontWeight: 600, color: "#1A1A1A" }}>50,000+</p>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B", marginTop: "4px" }}>Happy guests since 2019</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function DestCard({ dest, tall }) {
+  return (
+    
+      href={`/hotels?destination=${dest.name}`}
+      style={{
+        position: "relative", overflow: "hidden", borderRadius: "14px",
+        display: "block", height: tall ? "380px" : "280px",
+        cursor: "pointer",
+      }}
+    >
+      <img
+        src={dest.image}
+        alt={dest.name}
+        style={{
+          width: "100%", height: "100%", objectFit: "cover",
+          transition: "transform 0.5s ease",
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+        onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+      />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to bottom, transparent 35%, rgba(10,10,10,0.72) 100%)",
+      }} />
+
+      {/* Tag */}
+      <div style={{
+        position: "absolute", top: "16px", left: "16px",
+        backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
+        border: "1px solid rgba(255,255,255,0.25)",
+        borderRadius: "999px", padding: "4px 12px",
+      }}>
+        <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 500, color: "white" }}>{dest.tag}</span>
       </div>
 
-      {/* Scroll indicator */}
-      
-       <a> href="#destinations"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors"
-      
-        <span className="font-body text-xs tracking-widest uppercase">Explore</span>
-        <ChevronDown size={20} className="animate-bounce" />
-      </a>
-    </section>
+      {/* Content */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px" }}>
+        <p style={{ fontFamily: "Fraunces, serif", fontSize: "22px", fontWeight: 400, color: "white", marginBottom: "4px" }}>{dest.name}</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.7)" }}>{dest.hotelCount} hotels</p>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.7)" }}>from NPR {dest.startingPrice.toLocaleString()}</p>
+        </div>
+      </div>
+    </a>
   );
 }

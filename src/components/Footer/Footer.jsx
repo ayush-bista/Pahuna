@@ -1,95 +1,79 @@
 import { Link } from "react-router-dom";
-import { Mountain, Mail, Phone, MapPin, Globe, Share2, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 pt-16 pb-8 px-6">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 pointer-events-none" />
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <footer style={{ backgroundColor: "#1A1A1A", color: "white", padding: "64px 80px 32px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
+        {/* Top grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "48px", marginBottom: "56px" }}>
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-nepal-red rounded-xl flex items-center justify-center">
-                <Mountain size={18} className="text-white" />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+              <div style={{ width: "32px", height: "32px", backgroundColor: "#B85C38", borderRadius: "7px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 17l4-8 4 4 3-6 4 10" />
+                </svg>
               </div>
-              <span className="font-display font-bold text-xl text-white">
-                Nepal<span className="text-gradient">Stay</span>
+              <span style={{ fontFamily: "Fraunces, serif", fontSize: "18px", fontWeight: 600, color: "white" }}>
+                Nepal<span style={{ color: "#B85C38" }}>Stay</span>
               </span>
             </div>
-            <p className="font-body text-white/40 text-sm leading-relaxed mb-6">
-              Connecting travellers with Nepal's finest hotels across every destination.
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B", lineHeight: 1.7, maxWidth: "260px" }}>
+              Nepal's most trusted hotel booking platform. Every listing reviewed, every stay guaranteed.
             </p>
-            <div className="flex gap-3">
-              {[Globe, Share2, MessageCircle].map((Icon, i) => (
-                <button
-                  key={i}
-                  className="w-9 h-9 glass rounded-lg flex items-center justify-center text-white/40 hover:text-nepal-gold transition-all duration-300"
-                >
-                  <Icon size={15} />
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Destinations */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4 tracking-wider uppercase">Destinations</h4>
-            <ul className="space-y-2.5">
-              {["Kathmandu", "Pokhara", "Chitwan", "Lumbini", "Nagarkot", "Mustang"].map((d) => (
-                <li key={d}>
-                  <Link to={`/hotels?destination=${d}`} className="font-body text-white/40 hover:text-nepal-gold text-sm transition-colors">
-                    {d}
-                  </Link>
-                </li>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#6B6B6B", marginBottom: "20px" }}>
+              Destinations
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {["Kathmandu", "Pokhara", "Chitwan", "Nagarkot", "Lumbini", "Mustang"].map((d) => (
+                <Link key={d} to={`/hotels?destination=${d}`} style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#9CA3AF" }}>
+                  {d}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4 tracking-wider uppercase">Company</h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: "About Us", path: "/about" },
-                { label: "Contact", path: "/contact" },
-                { label: "Privacy Policy", path: "/privacy" },
-                { label: "Terms of Service", path: "/terms" },
-              ].map((item) => (
-                <li key={item.path}>
-                  <Link to={item.path} className="font-body text-white/40 hover:text-nepal-gold text-sm transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#6B6B6B", marginBottom: "20px" }}>
+              Company
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[{ l: "About", p: "/about" }, { l: "Contact", p: "/contact" }, { l: "Privacy", p: "/privacy" }, { l: "Terms", p: "/terms" }].map((i) => (
+                <Link key={i.l} to={i.p} style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#9CA3AF" }}>
+                  {i.l}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4 tracking-wider uppercase">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-white/40 text-sm font-body">
-                <MapPin size={14} className="text-nepal-gold flex-shrink-0" />
-                Thamel, Kathmandu, Nepal
-              </li>
-              <li className="flex items-center gap-3 text-white/40 text-sm font-body">
-                <Phone size={14} className="text-nepal-gold flex-shrink-0" />
-                +977-1-4444-5555
-              </li>
-              <li className="flex items-center gap-3 text-white/40 text-sm font-body">
-                <Mail size={14} className="text-nepal-gold flex-shrink-0" />
-                hello@nepalstay.com
-              </li>
-            </ul>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#6B6B6B", marginBottom: "20px" }}>
+              Contact
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#9CA3AF" }}>Thamel, Kathmandu</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#9CA3AF" }}>+977-1-4444-5555</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#9CA3AF" }}>hello@nepalstay.com</p>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-white/20 text-xs">© 2025 NepalStay. All rights reserved. Made with ❤️ for Nepal.</p>
-          <p className="font-body text-white/20 text-xs">🏔️ Proudly supporting Himalayan tourism</p>
+        <div style={{ borderTop: "1px solid #2D2D2D", paddingTop: "28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#4B5563" }}>
+            © 2025 NepalStay. Made with care for Nepal's tourism.
+          </p>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#4B5563" }}>
+            🏔️ Kathmandu, Nepal
+          </p>
         </div>
       </div>
     </footer>
