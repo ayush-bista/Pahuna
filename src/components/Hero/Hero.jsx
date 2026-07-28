@@ -15,61 +15,34 @@ export default function Hero() {
   return (
     <div style={{ backgroundColor: "#FAFAF8" }}>
 
-      {/* ── HERO SPLIT ── */}
-      <section style={{
-        minHeight: "100vh",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        paddingTop: "80px",
-      }}>
+      {/* HERO SPLIT */}
+      <section style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "1fr 1fr", paddingTop: "80px" }}>
 
-        {/* Left — editorial text side */}
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "80px 64px 80px 80px",
-        }}>
+        {/* Left — text side */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: "80px 64px 80px 80px" }}>
+
           {/* Eyebrow */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "28px" }}>
             <div style={{ width: "32px", height: "1px", backgroundColor: "#B85C38" }} />
-            <span style={{
-              fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600,
-              letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38",
-            }}>
+            <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38" }}>
               Nepal's Hotel Platform
             </span>
           </div>
 
           {/* Headline */}
-          <h1 style={{
-            fontFamily: "Fraunces, serif",
-            fontSize: "clamp(44px, 5vw, 72px)",
-            fontWeight: 300,
-            lineHeight: 1.08,
-            color: "#1A1A1A",
-            letterSpacing: "-1.5px",
-            marginBottom: "24px",
-          }}>
+          <h1 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(44px, 5vw, 72px)", fontWeight: 300, lineHeight: 1.08, color: "#1A1A1A", letterSpacing: "-1.5px", marginBottom: "24px" }}>
             Stay somewhere<br />
             <em style={{ fontStyle: "italic", color: "#B85C38" }}>worth remembering</em>
           </h1>
 
-          <p style={{
-            fontFamily: "Inter, sans-serif", fontSize: "16px", lineHeight: 1.7,
-            color: "#6B6B6B", maxWidth: "420px", marginBottom: "40px",
-          }}>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "16px", lineHeight: 1.7, color: "#6B6B6B", maxWidth: "420px", marginBottom: "40px" }}>
             Handpicked hotels across Nepal's most remarkable destinations —
             from Kathmandu's ancient lanes to Mustang's canyon walls.
           </p>
 
-          {/* Trust row */}
+          {/* Stats */}
           <div style={{ display: "flex", gap: "24px", marginBottom: "48px" }}>
-            {[
-              { n: "150+", l: "Hotels" },
-              { n: "6", l: "Destinations" },
-              { n: "4.8★", l: "Avg rating" },
-            ].map((s) => (
+            {[{ n: "150+", l: "Hotels" }, { n: "6", l: "Destinations" }, { n: "4.8★", l: "Avg rating" }].map((s) => (
               <div key={s.l}>
                 <p style={{ fontFamily: "Fraunces, serif", fontSize: "28px", fontWeight: 600, color: "#1A1A1A", lineHeight: 1 }}>{s.n}</p>
                 <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B", marginTop: "4px" }}>{s.l}</p>
@@ -78,13 +51,7 @@ export default function Hero() {
           </div>
 
           {/* Search card */}
-          <div style={{
-            backgroundColor: "white",
-            border: "1px solid #E8E4DC",
-            borderRadius: "16px",
-            padding: "20px",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-          }}>
+          <div style={{ backgroundColor: "white", border: "1px solid #E8E4DC", borderRadius: "16px", padding: "20px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr auto", gap: "12px", alignItems: "end" }}>
 
               {/* Destination */}
@@ -142,14 +109,7 @@ export default function Hero() {
               {/* Search button */}
               <button
                 onClick={handleSearch}
-                style={{
-                  backgroundColor: "#B85C38", color: "white",
-                  border: "none", borderRadius: "10px",
-                  padding: "12px 20px", cursor: "pointer",
-                  display: "flex", alignItems: "center", gap: "8px",
-                  fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500,
-                  whiteSpace: "nowrap",
-                }}
+                style={{ backgroundColor: "#B85C38", color: "white", border: "none", borderRadius: "10px", padding: "12px 20px", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px", fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500, whiteSpace: "nowrap" }}
               >
                 <Search size={15} />
                 Search
@@ -160,38 +120,32 @@ export default function Hero() {
             <div style={{ borderTop: "1px solid #E8E4DC", marginTop: "16px", paddingTop: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
               <Users size={14} color="#6B6B6B" />
               <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B" }}>Guests:</span>
-              <button onClick={() => setForm({ ...form, guests: Math.max(1, form.guests - 1) })} style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}>−</button>
+              <button
+                onClick={() => setForm({ ...form, guests: Math.max(1, form.guests - 1) })}
+                style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}
+              >−</button>
               <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500, color: "#1A1A1A", minWidth: "20px", textAlign: "center" }}>{form.guests}</span>
-              <button onClick={() => setForm({ ...form, guests: Math.min(12, form.guests + 1) })} style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}>+</button>
+              <button
+                onClick={() => setForm({ ...form, guests: Math.min(12, form.guests + 1) })}
+                style={{ width: "24px", height: "24px", borderRadius: "50%", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#1A1A1A", cursor: "pointer", backgroundColor: "white" }}
+              >+</button>
             </div>
           </div>
         </div>
 
-        {/* Right — photo collage side */}
+        {/* Right — photo side */}
         <div style={{ position: "relative", overflow: "hidden" }}>
-
-          {/* Main big photo */}
           <img
             src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&q=85"
             alt="Pokhara lake"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
-
-          {/* Overlay gradient — subtle bottom fade */}
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "linear-gradient(to bottom, transparent 60%, rgba(26,26,26,0.35) 100%)",
-          }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(26,26,26,0.35) 100%)" }} />
 
           {/* Floating review card */}
-          <div style={{
-            position: "absolute", bottom: "40px", left: "32px",
-            backgroundColor: "white", borderRadius: "14px",
-            padding: "16px 20px", boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-            maxWidth: "240px",
-          }}>
+          <div style={{ position: "absolute", bottom: "40px", left: "32px", backgroundColor: "white", borderRadius: "14px", padding: "16px 20px", boxShadow: "0 8px 32px rgba(0,0,0,0.15)", maxWidth: "240px" }}>
             <div style={{ display: "flex", gap: "3px", marginBottom: "8px" }}>
-              {[1,2,3,4,5].map((i) => (
+              {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />
               ))}
             </div>
@@ -199,7 +153,7 @@ export default function Hero() {
               "The most peaceful place I've ever stayed. Woke up to Annapurna in the clouds."
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <div style={{ width: "28px", height: "28px", borderRadius: "50%", backgroundColor: "#E8E4DC", overflow: "hidden" }}>
+              <div style={{ width: "28px", height: "28px", borderRadius: "50%", overflow: "hidden", backgroundColor: "#E8E4DC" }}>
                 <img src="https://i.pravatar.cc/28?img=47" alt="user" style={{ width: "100%", height: "100%" }} />
               </div>
               <div>
@@ -209,24 +163,20 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating destination badge */}
-          <div style={{
-            position: "absolute", top: "32px", right: "32px",
-            backgroundColor: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)",
-            borderRadius: "10px", padding: "10px 16px",
-          }}>
+          {/* Floating location badge */}
+          <div style={{ position: "absolute", top: "32px", right: "32px", backgroundColor: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)", borderRadius: "10px", padding: "10px 16px" }}>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", color: "#6B6B6B", marginBottom: "2px" }}>Currently viewing</p>
             <p style={{ fontFamily: "Fraunces, serif", fontSize: "16px", fontWeight: 600, color: "#1A1A1A" }}>Pokhara, Nepal</p>
           </div>
         </div>
       </section>
 
-      {/* ── DESTINATIONS STRIP ── */}
+      {/* DESTINATIONS PILL STRIP */}
       <section style={{ backgroundColor: "white", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "20px 80px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", gap: "12px", overflowX: "auto" }}>
           <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B", whiteSpace: "nowrap", marginRight: "8px" }}>Popular:</span>
           {destinations.map((d) => (
-            
+            <a
               key={d.id}
               href={`/hotels?destination=${d.name}`}
               style={{
@@ -242,7 +192,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ── DESTINATIONS GRID ── */}
+      {/* DESTINATIONS GRID */}
       <section style={{ padding: "80px 80px", maxWidth: "1360px", margin: "0 auto" }}>
 
         {/* Section header */}
@@ -255,7 +205,7 @@ export default function Hero() {
               Every corner<br />of Nepal
             </h2>
           </div>
-          
+          <a
             href="/hotels"
             style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#B85C38", fontWeight: 500 }}
           >
@@ -271,7 +221,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ── WHY NEPALSTAY ── */}
+      {/* WHY NEPALSTAY */}
       <section style={{ backgroundColor: "#F2EDE8", padding: "80px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
@@ -326,7 +276,7 @@ export default function Hero() {
 
 function DestCard({ dest, tall }) {
   return (
-    
+    <a
       href={`/hotels?destination=${dest.name}`}
       style={{
         position: "relative", overflow: "hidden", borderRadius: "14px",
