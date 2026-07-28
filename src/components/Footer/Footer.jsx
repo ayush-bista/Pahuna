@@ -17,7 +17,7 @@ export default function Footer() {
                 </svg>
               </div>
               <span style={{ fontFamily: "Fraunces, serif", fontSize: "18px", fontWeight: 600, color: "white" }}>
-                Nepal<span style={{ color: "#B85C38" }}>Stay</span>
+                Pahuna
               </span>
             </div>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B", lineHeight: 1.7, maxWidth: "240px" }}>
@@ -61,14 +61,14 @@ export default function Footer() {
             <div style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>Thamel, Kathmandu</p>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>+977-1-4444-5555</p>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>hello@nepalstay.com</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>hello@pahuna.com</p>
             </div>
           </div>
         </div>
 
         <div style={{ borderTop: "1px solid #2D2D2D", paddingTop: "28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#4B5563" }}>
-            © 2025 NepalStay. Made with care for Nepal's tourism.
+            © 2025 Pahuna. Made with care for Nepal's tourism.
           </p>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#4B5563" }}>
             🏔️ Kathmandu, Nepal

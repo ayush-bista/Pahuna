@@ -268,7 +268,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ── WHY NEPALSTAY ── */}
+      {/* ── WHY PAHUNA ── */}
       <section style={{ backgroundColor: "#F2EDE8", padding: "80px 0" }}>
         <div style={WRAP}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
@@ -280,7 +280,7 @@ export default function Hero() {
                 Built for travellers<br /><em>who care about detail</em>
               </h2>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#6B6B6B", lineHeight: 1.75, marginBottom: "32px" }}>
-                Every hotel on NepalStay is reviewed by our team on the ground.
+                Every hotel on Pahuna is reviewed by our team on the ground.
                 No filler listings — just places we'd send our own family to.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
