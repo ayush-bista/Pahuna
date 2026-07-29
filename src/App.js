@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import HotelsPage from "./pages/HotelsPage";
+import HotelDetailPage from "./pages/HotelDetailPage";
 
 const ComingSoon = ({ page }) => (
   <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#FAFAF8" }}>
@@ -22,12 +23,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/hotels" element={<HotelsPage />} />
+        <Route path="/hotels/:id" element={<HotelDetailPage />} />
         <Route path="/destinations" element={<ComingSoon page="Destinations" />} />
-        <Route path="/hotels/:id" element={<ComingSoon page="Hotel Detail" />} />
         <Route path="/login" element={<ComingSoon page="Sign In" />} />
         <Route path="/signup" element={<ComingSoon page="Sign Up" />} />
         <Route path="/about" element={<ComingSoon page="About" />} />
         <Route path="/contact" element={<ComingSoon page="Contact" />} />
+        <Route path="/booking/:id" element={<ComingSoon page="Booking" />} />
       </Routes>
       <Footer />
     </Router>
