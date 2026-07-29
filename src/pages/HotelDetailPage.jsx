@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { hotels } from "../data/hotels";
 
-const WRAP = { maxWidth: "1200px", margin: "0 auto", padding: "0 48px" };
+const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const amenityIcons = {
   "Free WiFi": <Wifi size={16} />,
