@@ -62,7 +62,7 @@ export default function Hero() {
             zIndex: 2,
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "24px" }}>
-              <div style={{ width: "24px", height: "2px", backgroundColor: "#B85C38", borderRadius: "2px" }} />
+              {/* <div style={{ width: "24px", height: "2px", backgroundColor: "#B85C38", borderRadius: "2px" }} /> */}
               <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "#B85C38" }}>
                 Explore Nepal
               </span>

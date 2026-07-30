@@ -21,7 +21,7 @@ export default function Footer() {
               </span>
             </div>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B", lineHeight: 1.7, maxWidth: "240px" }}>
-              Nepal's most trusted hotel booking platform — from Kathmandu to Tinjure.
+              Nepal's most trusted hotel booking platform from Kathmandu to Tinjure.
             </p>
           </div>
 
@@ -59,9 +59,9 @@ export default function Footer() {
               Contact
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>Thamel, Kathmandu</p>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>+977-1-4444-5555</p>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>hello@pahuna.com</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>Itahari, Nepal</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>+977-9806360619</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B" }}>aayushbista70@gmail.com</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function Footer() {
             © 2025 Pahuna. Made with care for Nepal's tourism.
           </p>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#4B5563" }}>
-            🏔️ Kathmandu, Nepal
+            Itahari, Nepal
           </p>
         </div>
       </div>
