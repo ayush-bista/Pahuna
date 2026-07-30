@@ -86,7 +86,26 @@ export default function Navbar() {
           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1A1A1A"; e.currentTarget.style.color = "white"; }}
           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#1A1A1A"; }}
         >
-          Contact Us
+          {/* Contact Us */}
+          {/* Right — auth + CTA */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+          <Link
+            to="/login"
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500, color: "#6B6B6B", textDecoration: "none", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6B6B6B")}
+          >
+            Sign in
+          </Link>
+          <Link
+            to="/contact"
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 500, color: "#1A1A1A", textDecoration: "none", padding: "9px 24px", border: "1.5px solid #1A1A1A", borderRadius: "8px", backgroundColor: "transparent", transition: "all 0.2s" }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1A1A1A"; e.currentTarget.style.color = "white"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#1A1A1A"; }}
+          >
+            Contact Us
+          </Link>
+        </div>
         </Link>
       </div>
     </nav>
