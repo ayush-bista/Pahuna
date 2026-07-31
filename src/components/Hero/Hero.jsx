@@ -7,19 +7,19 @@ const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1000&q=90",
+    image: "https://i.pinimg.com/1200x/97/93/e5/9793e530eb5ab6dce404538049f6927e.jpg",
     location: "Pokhara, Nepal",
   },
   {
-    image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=1000&q=90",
+    image: "https://gotripzi.com/_astro/kathmandu-np-city.Db7RXDmf.webp",
     location: "Kathmandu, Nepal",
   },
   {
-    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1000&q=90",
-    location: "Nagarkot, Nepal",
+    image: "https://cdn.kimkim.com/files/a/content_articles/featured_photos/b04d6fe32a18d15c8f2ccf170a3e2b83c9af1c55/big-a9a20530ac77e5af349e6b67777a4549.jpg",
+    location: "Bandipur, Nepal",
   },
   {
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1000&q=90",
+    image: "https://i.pinimg.com/736x/2a/b5/d0/2ab5d03cf53714d584d7de6cdb376f4f.jpg",
     location: "Chitwan, Nepal",
   },
 ];
