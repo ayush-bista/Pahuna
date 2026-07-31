@@ -45,7 +45,7 @@ export default function Hero() {
         <div style={{
           backgroundColor: "#DDE6F0",
           borderRadius: "28px",
-          overflow: "hidden",
+          overflow: "visible",
           position: "relative",
           minHeight: "500px",
           display: "grid",
@@ -178,7 +178,7 @@ export default function Hero() {
             right: "0",
             padding: "0 40px",
             transform: "translateY(50%)",
-            zIndex: 10,
+            zIndex: 110,
           }}>
             <div style={{
               backgroundColor: "white",
