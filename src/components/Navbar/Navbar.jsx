@@ -46,7 +46,7 @@ export default function Navbar() {
             </svg>
           </div>
           <span style={{ fontFamily: "Fraunces, serif", fontSize: "20px", fontWeight: 600, color: "#1A1A1A", letterSpacing: "-0.3px" }}>
-            Nepal<span style={{ color: "#B85C38" }}>Stay</span>
+            Pahuna
           </span>
         </Link>
 
