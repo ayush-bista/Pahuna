@@ -8,17 +8,9 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import BookingPage from "./pages/BookingPage";
 import DashboardPage from "./pages/DashboardPage";
-
-const ComingSoon = ({ page }) => (
-  <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#FAFAF8" }}>
-    <div style={{ textAlign: "center" }}>
-      <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "12px" }}>
-        Coming in next update
-      </p>
-      <h1 style={{ fontFamily: "Fraunces, serif", fontSize: "3rem", color: "#1A1A1A", fontWeight: 300 }}>{page}</h1>
-    </div>
-  </div>
-);
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -32,9 +24,9 @@ export default function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/booking/:id" element={<BookingPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/destinations" element={<ComingSoon page="Destinations" />} />
-        <Route path="/about" element={<ComingSoon page="About" />} />
-        <Route path="/contact" element={<ComingSoon page="Contact" />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </Router>
