@@ -362,41 +362,41 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Row 1 */}
-          <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: "16px", marginBottom: "16px" }}>
-            <DestCard dest={destinations[0]} height="420px" large />
-            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: "16px" }}>
-              <DestCard dest={destinations[1]} height="202px" />
-              <DestCard dest={destinations[2]} height="202px" />
-            </div>
-          </div>
+          {/* Row 1 — 1 large + 2 stacked */}
+<div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: "16px", marginBottom: "16px" }} className="reveal">
+  <DestCard dest={destinations[0]} height="420px" large />
+  <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: "16px" }}>
+    <DestCard dest={destinations[1]} height="202px" />
+    <DestCard dest={destinations[2]} height="202px" />
+  </div>
+</div>
 
-          {/* Row 2 */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "16px" }}>
-            <DestCard dest={destinations[3]} height="240px" />
-            <DestCard dest={destinations[4]} height="240px" />
-            <DestCard dest={destinations[5]} height="240px" />
-          </div>
+{/* Row 2 */}
+<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "16px" }} className="reveal">
+  <DestCard dest={destinations[3]} height="240px" />
+  <DestCard dest={destinations[4]} height="240px" />
+  <DestCard dest={destinations[5]} height="240px" />
+</div>
 
-          {/* Row 3 — Eastern Nepal */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <div style={{ width: "20px", height: "1.5px", backgroundColor: "#B85C38" }} />
-              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#B85C38" }}>
-                Eastern Nepal — Hidden Gems
-              </span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "16px" }}>
-              {destinations.slice(6, 9).map((dest) => (
-                <DestCard key={dest.id} dest={dest} height="210px" />
-              ))}
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-              {destinations.slice(9, 12).map((dest) => (
-                <DestCard key={dest.id} dest={dest} height="210px" />
-              ))}
-            </div>
-          </div>
+{/* Row 3 — Eastern Nepal */}
+<div className="reveal">
+  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+    <div style={{ width: "20px", height: "1.5px", backgroundColor: "#B85C38" }} />
+    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#B85C38" }}>
+      Eastern Nepal — Hidden Gems
+    </span>
+  </div>
+  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "16px" }}>
+    {destinations.slice(6, 9).map((dest) => (
+      <DestCard key={dest.id} dest={dest} height="210px" />
+    ))}
+  </div>
+  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+    {destinations.slice(9, 12).map((dest) => (
+      <DestCard key={dest.id} dest={dest} height="210px" />
+    ))}
+  </div>
+</div>
         </div>
       </section>
 
