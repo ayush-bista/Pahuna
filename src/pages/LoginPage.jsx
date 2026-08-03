@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Mountain } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
+
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -34,6 +37,11 @@ export default function LoginPage() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#EEF2F7", paddingTop: "72px", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px" }}>
       <div style={{ width: "100%", maxWidth: "1100px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderRadius: "24px", overflow: "hidden", boxShadow: "0 24px 80px rgba(0,0,0,0.12)" }}>
+
+<Helmet>
+  <title>Sign In — NepalStay</title>
+</Helmet>
+
 
         {/* Left — image panel */}
         <div style={{ position: "relative", minHeight: "600px", overflow: "hidden" }}>

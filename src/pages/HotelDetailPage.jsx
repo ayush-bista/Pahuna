@@ -6,6 +6,8 @@ import {
   Heart, Award, Users, Calendar, Minus, Plus
 } from "lucide-react";
 import { hotels } from "../data/hotels";
+import { Helmet } from "react-helmet-async";
+
 
 const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
@@ -48,7 +50,30 @@ export default function HotelDetailPage() {
 
   if (!hotel) {
     return (
+      
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#FAFAF8", paddingTop: "80px" }}>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        <Helmet>
+  <title>{hotel.name} — NepalStay</title>
+  <meta name="description" content={hotel.description} />
+</Helmet>
+
+
+
+
+
+
+
+
+
         <div style={{ textAlign: "center" }}>
           <p style={{ fontFamily: "Fraunces, serif", fontSize: "32px", color: "#1A1A1A", marginBottom: "16px" }}>Hotel not found</p>
           <Link to="/hotels" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#B85C38", textDecoration: "none" }}>

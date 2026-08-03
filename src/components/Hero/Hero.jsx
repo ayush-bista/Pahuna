@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MapPin, Calendar, Search, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { destinations, stats } from "../../data/hotels";
 
+
 const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [

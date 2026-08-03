@@ -5,6 +5,8 @@ import {
   Coffee, Car, X, ChevronDown, Search, ArrowRight
 } from "lucide-react";
 import { hotels, destinations } from "../data/hotels";
+import { Helmet } from "react-helmet-async";
+
 
 const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 const CATEGORIES = ["All", "Luxury", "Boutique", "Business"];
@@ -68,7 +70,22 @@ export default function HotelsPage() {
     selectedDest !== "All" || selectedCat !== "All" || maxPrice < 30000 || searchQuery;
 
   return (
+    
     <div style={{ backgroundColor: "#FAFAF8", minHeight: "100vh", paddingTop: "80px" }}>
+
+
+
+
+<Helmet>
+  <title>Browse Hotels — NepalStay</title>
+  <meta name="description" content="Filter and browse 85+ verified hotels across 12 Nepal destinations. Luxury, boutique, safari lodges and more." />
+</Helmet>
+
+
+
+
+
+
 
       {/* ── PAGE HEADER ── */}
       <div style={{ backgroundColor: "white", borderBottom: "1px solid #E8E4DC", padding: "36px 0" }}>

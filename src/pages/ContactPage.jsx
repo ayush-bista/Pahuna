@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, Check } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
+
 
 const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
@@ -64,6 +67,14 @@ export default function ContactPage() {
 
   return (
     <div style={{ backgroundColor: "#FAFAF8", paddingTop: "80px" }}>
+
+
+<Helmet>
+  <title>Contact — NepalStay</title>
+  <meta name="description" content="Get in touch with the NepalStay team for booking support, hotel partnerships, or general enquiries." />
+</Helmet>
+
+
 
       {/* PAGE HEADER */}
       <div style={{ backgroundColor: "white", borderBottom: "1px solid #E8E4DC", padding: "56px 0" }}>

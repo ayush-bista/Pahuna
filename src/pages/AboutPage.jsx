@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Heart, Shield, Users, Award, Mountain } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
 
 const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
@@ -69,6 +71,18 @@ const milestones = [
 export default function AboutPage() {
   return (
     <div style={{ backgroundColor: "#FAFAF8", paddingTop: "80px" }}>
+
+
+
+
+<Helmet>
+  <title>About Us — NepalStay</title>
+  <meta name="description" content="Learn about NepalStay — built by Nepalis, for travellers who want to experience Nepal's finest hotels and hidden gems." />
+</Helmet>
+
+
+
+
 
       {/* HERO */}
       <section style={{ backgroundColor: "#EEF2F7", padding: "80px 0 0" }}>

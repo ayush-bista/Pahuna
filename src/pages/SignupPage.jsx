@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Mountain, Check } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
+
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -81,6 +84,13 @@ export default function SignupPage() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#EEF2F7", paddingTop: "72px", display: "flex", alignItems: "center", justifyContent: "center", padding: "100px 24px 60px" }}>
       <div style={{ width: "100%", maxWidth: "1100px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderRadius: "24px", overflow: "hidden", boxShadow: "0 24px 80px rgba(0,0,0,0.12)" }}>
+
+
+<Helmet>
+  <title>Create Account — NepalStay</title>
+</Helmet>
+
+
 
         {/* Left — form panel */}
         <div style={{ backgroundColor: "white", padding: "52px 52px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
