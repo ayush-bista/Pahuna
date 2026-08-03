@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# 🏔️ NepalStay — Nepal Hotel Booking Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-featured hotel booking web application built in React, focused on Nepal's most remarkable travel destinations.
 
-## Available Scripts
+## 🌐 Live Demo
+[nepal-stay.vercel.app](https://nepal-stay.vercel.app)
 
-In the project directory, you can run:
+## 📸 Pages
+- **Home** — Hero slideshow, destination grid, search bar
+- **Hotels** — Filter by destination, category, price, sort
+- **Hotel Detail** — Gallery, amenities, map, booking panel
+- **Booking** — 3-step form: guest details → payment → confirmation
+- **Dashboard** — Bookings, saved hotels, profile, settings
+- **Login / Signup** — Auth pages with validation
+- **About** — Story, values, team, timeline
+- **Contact** — Form with FAQ
+- **404** — Custom not-found page
 
-### `npm start`
+## 🗂️ Destinations Covered
+Kathmandu, Pokhara, Chitwan, Nagarkot, Lumbini, Mustang,
+Ilam, Bhedetar, Basantapur, Tinjure, Dhankuta, Bandipur
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
+- React 18
+- React Router DOM v6
+- Tailwind CSS v3
+- Lucide React (icons)
+- React Helmet Async (SEO)
+- Google Fonts — Fraunces + Inter
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+```bash
+git clone https://github.com/YOUR_USERNAME/nepal-stay.git
+cd nepal-stay
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Build for Production
 
-### `npm run build`
+```bash
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🌍 Deploy to Vercel
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install -g vercel
+vercel
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic deploys.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📁 Project Structure
