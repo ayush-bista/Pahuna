@@ -186,7 +186,7 @@ export default function Hero() {
           </div>
 
           {/* ── SEARCH BAR floating at card bottom ── */}
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 48px", transform: "translateY(50%)", zIndex: 10 }}>
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 48px", transform: "translateY(50%)", zIndex: 200 }}>
             <div style={{ backgroundColor: "white", borderRadius: "16px", boxShadow: "0 8px 48px rgba(0,0,0,0.13)", display: "grid", gridTemplateColumns: "1fr 1px 1fr 1px 1fr 1px auto", alignItems: "center", overflow: "hidden", border: "1px solid #E8E4DC" }}>
 
               {/* Destination */}
