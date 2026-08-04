@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPin, Calendar, Search, ArrowRight, ChevronLeft, ChevronRight, Star, Shield, Clock } from "lucide-react";
 import { destinations, stats } from "../../data/hotels";
@@ -7,11 +7,11 @@ import useReveal from "../../hooks/useReveal";
 const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&q=90", location: "Pokhara, Nepal", tagline: "Gateway to the Annapurnas" },
-  { image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=1200&q=90", location: "Kathmandu, Nepal", tagline: "City of Temples" },
-  { image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&q=90", location: "Nagarkot, Nepal", tagline: "Himalayan Panoramas" },
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=90", location: "Chitwan, Nepal", tagline: "Jungle Safari Paradise" },
-  { image: "https://images.unsplash.com/photo-1563514227147-6d2af38dce6f?w=1200&q=90", location: "Ilam, Nepal", tagline: "Nepal's Tea Capital" },
+  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", location: "Pokhara", tagline: "Gateway to the Annapurnas" },
+  { image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=1920&q=90", location: "Kathmandu", tagline: "City of Temples" },
+  { image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1920&q=90", location: "Nagarkot", tagline: "Himalayan Panoramas" },
+  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", location: "Chitwan", tagline: "Jungle Safari Paradise" },
+  { image: "https://images.unsplash.com/photo-1563514227147-6d2af38dce6f?w=1920&q=90", location: "Ilam", tagline: "Nepal's Tea Capital" },
 ];
 
 function DestCard({ dest, height = "260px", large = false }) {
@@ -51,229 +51,448 @@ function DestCard({ dest, height = "260px", large = false }) {
   );
 }
 
+/* ── Minimal CSS injected once ── */
+const heroCSS = `
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSearchEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSlowZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+@keyframes heroAccentLine {
+  from { width: 0; opacity: 0; }
+  to   { width: 28px; opacity: 1; }
+}
+@keyframes heroBadgeFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.hero-arrow:hover {
+  background-color: rgba(255,255,255,0.95) !important;
+  color: #1A1A1A !important;
+  border-color: rgba(255,255,255,0.95) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+}
+.hero-search-section select:focus,
+.hero-search-section input:focus {
+  outline: none !important;
+}
+.hero-search-go:hover {
+  background-color: #9A4D2F !important;
+  box-shadow: 0 4px 16px rgba(184,92,56,0.45) !important;
+}
+`;
+
 export default function Hero() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ destination: "", checkIn: "", checkOut: "" });
   const [slide, setSlide] = useState(0);
+  const timerRef = useRef(null);
   const destRef = useReveal(0.05);
   const whyRef = useReveal(0.1);
 
-  // Auto-advance slideshow
+  // Inject CSS once
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSlide((s) => (s + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    const id = "hero-injected-css";
+    if (!document.getElementById(id)) {
+      const style = document.createElement("style");
+      style.id = id;
+      style.textContent = heroCSS;
+      document.head.appendChild(style);
+    }
   }, []);
 
-  const prevSlide = () => setSlide((s) => (s - 1 + heroSlides.length) % heroSlides.length);
-  const nextSlide = () => setSlide((s) => (s + 1) % heroSlides.length);
+  // Auto-advance
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setSlide((s) => (s + 1) % heroSlides.length);
+    }, 5500);
+  }, []);
+
+  useEffect(() => {
+    resetTimer();
+    return () => clearInterval(timerRef.current);
+  }, [resetTimer]);
+
+  const go = (i) => { setSlide(i); resetTimer(); };
+  const prev = () => { setSlide((s) => (s - 1 + heroSlides.length) % heroSlides.length); resetTimer(); };
+  const next = () => { setSlide((s) => (s + 1) % heroSlides.length); resetTimer(); };
 
   const handleSearch = () => {
     const params = new URLSearchParams(form);
     navigate(`/hotels?${params.toString()}`);
   };
 
+  const current = heroSlides[slide];
+
   return (
     <div style={{ backgroundColor: "#EEF2F7" }}>
 
-      {/* ── HERO CARD ── */}
-      <div style={{ ...OUTER, paddingTop: "84px", paddingBottom: "0" }}>
+      {/* ══════════ HERO ══════════ */}
+      <section style={{
+        position: "relative",
+        height: "92vh",
+        minHeight: "620px",
+        maxHeight: "920px",
+        overflow: "hidden",
+      }}>
+
+        {/* ── Background images (crossfade) ── */}
+        {heroSlides.map((s, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: slide === i ? 1 : 0,
+              transition: "opacity 1s ease-in-out",
+              zIndex: 0,
+            }}
+          >
+            <img
+              src={s.image}
+              alt={s.location}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                animation: slide === i ? "heroSlowZoom 12s ease-out forwards" : "none",
+              }}
+            />
+          </div>
+        ))}
+
+        {/* ── Overlay — multi-layer for consistent text legibility ── */}
+        {/* Base darkening overlay */}
         <div style={{
-          backgroundColor: "#DAE4EF",
-          borderRadius: "24px",
-          overflow: "hidden",
+          position: "absolute", inset: 0, zIndex: 1,
+          background: "linear-gradient(170deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.22) 35%, rgba(0,0,0,0.62) 100%)",
+        }} />
+        {/* Left-side scrim for text area */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 1,
+          background: "linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 45%, transparent 100%)",
+        }} />
+        {/* Bottom-area scrim for search bar and badges readability */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 1,
+          background: "linear-gradient(to top, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.20) 35%, transparent 60%)",
+        }} />
+
+        {/* ── Content ── */}
+        <div style={{
           position: "relative",
-          display: "grid",
-          gridTemplateColumns: "52% 48%",
-          minHeight: "520px",
+          zIndex: 10,
+          height: "100%",
+          maxWidth: "1320px",
+          margin: "0 auto",
+          padding: "0 64px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          paddingBottom: "140px",
         }}>
 
-          {/* Left — text */}
-          <div style={{ padding: "64px 48px 148px 56px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", zIndex: 2 }}>
-
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
-              <div style={{ width: "28px", height: "2px", backgroundColor: "#B85C38", borderRadius: "2px" }} />
-              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38" }}>
-                Nepal's Hotel Platform
-              </span>
-            </div>
-
-            <h1 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(38px, 4.5vw, 60px)", fontWeight: 700, lineHeight: 1.07, color: "#1A1A1A", letterSpacing: "-2px", marginBottom: "18px" }}>
-              Find your{" "}
-              <em style={{ color: "#B85C38", fontStyle: "italic" }}>perfect</em>
-              <br />stay in Nepal
-            </h1>
-
-            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", lineHeight: 1.78, color: "#4B4B4B", maxWidth: "360px", marginBottom: "36px" }}>
-              Handpicked hotels across 12 destinations — from Kathmandu's ancient temples to Ilam's misty tea gardens.
-            </p>
-
-            {/* Mini trust badges */}
-            <div style={{ display: "flex", gap: "20px", marginBottom: "40px" }}>
-              {[
-                { icon: <Shield size={13} />, label: "Verified hotels" },
-                { icon: <Clock size={13} />, label: "Instant confirmation" },
-                { icon: <Star size={13} />, label: "4.8★ average" },
-              ].map((t) => (
-                <div key={t.label} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  <span style={{ color: "#B85C38" }}>{t.icon}</span>
-                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B" }}>{t.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Slide controls */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <button
-                onClick={prevSlide}
-                style={{ width: "42px", height: "42px", borderRadius: "50%", border: "1.5px solid #C0CDD8", backgroundColor: "white", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", transition: "all 0.2s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1A1A1A"; e.currentTarget.style.borderColor = "#1A1A1A"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "white"; e.currentTarget.style.borderColor = "#C0CDD8"; }}
-              >
-                <ChevronLeft size={17} color="#1A1A1A" />
-              </button>
-              <button
-                onClick={nextSlide}
-                style={{ width: "42px", height: "42px", borderRadius: "50%", border: "1.5px solid #C0CDD8", backgroundColor: "white", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", transition: "all 0.2s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1A1A1A"; e.currentTarget.style.borderColor = "#1A1A1A"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "white"; e.currentTarget.style.borderColor = "#C0CDD8"; }}
-              >
-                <ChevronRight size={17} color="#1A1A1A" />
-              </button>
-              <div style={{ display: "flex", alignItems: "center", gap: "5px", marginLeft: "6px" }}>
-                {heroSlides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSlide(i)}
-                    style={{ width: slide === i ? "22px" : "7px", height: "7px", borderRadius: "999px", border: "none", padding: 0, backgroundColor: slide === i ? "#B85C38" : "#B8C8D8", cursor: "pointer", transition: "all 0.3s" }}
-                  />
-                ))}
-              </div>
-            </div>
+          {/* Tag line */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            marginBottom: "18px",
+            animation: "heroEnter 0.7s ease both 0.2s",
+          }}>
+            <div style={{ width: "28px", height: "2px", backgroundColor: "#D4764E", animation: "heroAccentLine 0.6s ease both 0.4s" }} />
+            <span style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "3.5px",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.95)",
+              textShadow: "0 1px 6px rgba(0,0,0,0.5), 0 0px 2px rgba(0,0,0,0.3)",
+            }}>
+              Nepal's Hotel Platform
+            </span>
           </div>
 
-          {/* Right — photo */}
-          <div style={{ position: "relative", overflow: "hidden" }}>
-            {heroSlides.map((s, i) => (
-              <img
-                key={i}
-                src={s.image}
-                alt={s.location}
+          {/* Heading */}
+          <h1 style={{
+            fontFamily: "Fraunces, serif",
+            fontSize: "clamp(42px, 5.5vw, 74px)",
+            fontWeight: 700,
+            lineHeight: 1.06,
+            color: "white",
+            letterSpacing: "-2.5px",
+            marginBottom: "20px",
+            maxWidth: "680px",
+            textShadow: "0 2px 20px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.25)",
+            animation: "heroEnter 0.8s ease both 0.35s",
+          }}>
+            Find your{" "}
+            <em style={{ color: "#E8956C", fontStyle: "italic", textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}>perfect</em>
+            <br />stay in Nepal
+          </h1>
+
+          {/* Sub text */}
+          <p style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "16px",
+            lineHeight: 1.75,
+            color: "rgba(255,255,255,0.93)",
+            maxWidth: "430px",
+            marginBottom: "28px",
+            textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
+            animation: "heroEnter 0.8s ease both 0.5s",
+          }}>
+            Handpicked hotels across 12 destinations — from Kathmandu's ancient temples to Ilam's misty tea gardens.
+          </p>
+
+          {/* Quick info row */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            animation: "heroEnter 0.7s ease both 0.65s",
+          }}>
+            {[
+              { icon: <Shield size={13} />, text: "Verified hotels" },
+              { icon: <Star size={13} />, text: "4.8★ avg rating" },
+              { icon: <Clock size={13} />, text: "Instant booking" },
+            ].map((item, idx) => (
+              <div
+                key={item.text}
                 style={{
-                  position: "absolute", inset: 0,
-                  width: "100%", height: "100%", objectFit: "cover",
-                  opacity: slide === i ? 1 : 0,
-                  transition: "opacity 0.7s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  backgroundColor: "rgba(0,0,0,0.25)",
+                  backdropFilter: "blur(8px)",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  animation: `heroBadgeFadeIn 0.5s ease both ${0.8 + idx * 0.1}s`,
+                }}
+              >
+                <span style={{ color: "#E8956C" }}>{item.icon}</span>
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.95)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Slide arrows (left edge) ── */}
+        <div style={{
+          position: "absolute",
+          right: "32px",
+          bottom: "180px",
+          zIndex: 15,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "10px",
+        }}>
+          <button
+            className="hero-arrow"
+            onClick={prev}
+            aria-label="Previous"
+            style={{
+              width: "42px", height: "42px", borderRadius: "50%",
+              border: "1.5px solid rgba(255,255,255,0.30)",
+              backgroundColor: "rgba(0,0,0,0.2)",
+              backdropFilter: "blur(6px)",
+              color: "white",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "all 0.25s ease",
+            }}
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            className="hero-arrow"
+            onClick={next}
+            aria-label="Next"
+            style={{
+              width: "42px", height: "42px", borderRadius: "50%",
+              border: "1.5px solid rgba(255,255,255,0.30)",
+              backgroundColor: "rgba(0,0,0,0.2)",
+              backdropFilter: "blur(6px)",
+              color: "white",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "all 0.25s ease",
+            }}
+          >
+            <ChevronRight size={18} />
+          </button>
+
+          {/* Location label */}
+          <div style={{ marginTop: "6px", textAlign: "center" }}>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "white", lineHeight: 1, textShadow: "0 1px 6px rgba(0,0,0,0.5)" }}>
+              {current.location}
+            </p>
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", color: "rgba(255,255,255,0.7)", marginTop: "3px", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>
+              {current.tagline}
+            </p>
+          </div>
+
+          {/* Slide dots */}
+          <div style={{ display: "flex", gap: "6px", marginTop: "4px" }}>
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Slide ${i + 1}`}
+                style={{
+                  width: slide === i ? "20px" : "6px",
+                  height: "6px",
+                  borderRadius: "999px",
+                  border: "none",
+                  padding: 0,
+                  backgroundColor: slide === i ? "white" : "rgba(255,255,255,0.35)",
+                  cursor: "pointer",
+                  transition: "all 0.35s ease",
                 }}
               />
             ))}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #DAE4EF 0%, transparent 18%)" }} />
-
-            {/* Location pill */}
-            <div style={{ position: "absolute", top: "24px", right: "24px", backgroundColor: "rgba(255,255,255,0.90)", backdropFilter: "blur(12px)", borderRadius: "10px", padding: "9px 14px", display: "flex", alignItems: "center", gap: "6px", boxShadow: "0 2px 12px rgba(0,0,0,0.10)" }}>
-              <MapPin size={13} color="#B85C38" />
-              <div>
-                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "#1A1A1A", lineHeight: 1 }}>{heroSlides[slide].location}</p>
-                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", color: "#6B6B6B", marginTop: "2px" }}>{heroSlides[slide].tagline}</p>
-              </div>
-            </div>
-
-            {/* Slide counter */}
-            <div style={{ position: "absolute", bottom: "24px", right: "24px", backgroundColor: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", borderRadius: "8px", padding: "6px 12px" }}>
-              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "white" }}>{slide + 1} / {heroSlides.length}</span>
-            </div>
           </div>
+          {/* Counter */}
+          <span style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.55)", marginTop: "2px", textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}>
+            {String(slide + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
+          </span>
+        </div>
 
-          {/* ── SEARCH BAR floating at card bottom ── */}
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 48px", transform: "translateY(50%)", zIndex: 200 }}>
-            <div style={{ backgroundColor: "white", borderRadius: "16px", boxShadow: "0 8px 48px rgba(0,0,0,0.13)", display: "grid", gridTemplateColumns: "1fr 1px 1fr 1px 1fr 1px auto", alignItems: "center", overflow: "hidden", border: "1px solid #E8E4DC" }}>
-
-              {/* Destination */}
-              <div style={{ padding: "18px 22px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px" }}>
-                  <MapPin size={13} color="#B85C38" />
-                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Destination</span>
-                </div>
-                <select
-                  value={form.destination}
-                  onChange={(e) => setForm({ ...form, destination: e.target.value })}
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: form.destination ? "#1A1A1A" : "#9CA3AF", border: "none", background: "none", outline: "none", width: "100%", cursor: "pointer", padding: 0 }}
-                >
-                  <option value="">Where to go?</option>
-                  {destinations.map((d) => (
-                    <option key={d.id} value={d.name}>{d.name}</option>
-                  ))}
-                </select>
+        {/* ══════ SEARCH BAR ══════ */}
+        <div className="hero-search-section" style={{
+          position: "absolute",
+          bottom: "48px",
+          left: "64px",
+          right: "64px",
+          zIndex: 20,
+          maxWidth: "1000px",
+          animation: "heroSearchEnter 0.7s ease both 0.8s",
+        }}>
+          <div style={{
+            backgroundColor: "white",
+            borderRadius: "18px",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.08)",
+            display: "grid",
+            gridTemplateColumns: "1fr 1px 1fr 1px 1fr auto",
+            alignItems: "center",
+          }}>
+            {/* Destination */}
+            <div style={{ padding: "16px 24px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                <MapPin size={12} color="#B85C38" />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Destination</span>
               </div>
+              <select
+                value={form.destination}
+                onChange={(e) => setForm({ ...form, destination: e.target.value })}
+                style={{
+                  fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600,
+                  color: form.destination ? "#1A1A1A" : "#9CA3AF",
+                  border: "none", background: "none", outline: "none", width: "100%",
+                  cursor: "pointer", padding: 0,
+                }}
+              >
+                <option value="">Where to go?</option>
+                {destinations.map((d) => (
+                  <option key={d.id} value={d.name}>{d.name}</option>
+                ))}
+              </select>
+            </div>
 
-              <div style={{ height: "36px", backgroundColor: "#E8E4DC" }} />
+            <div style={{ height: "36px", backgroundColor: "#E8E4DC" }} />
 
-              {/* Check In */}
-              <div style={{ padding: "18px 22px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px" }}>
-                  <Calendar size={13} color="#B85C38" />
-                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Check In</span>
-                </div>
-                <input
-                  type="date"
-                  value={form.checkIn}
-                  onChange={(e) => setForm({ ...form, checkIn: e.target.value })}
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: form.checkIn ? "#1A1A1A" : "#9CA3AF", border: "none", background: "none", outline: "none", width: "100%", padding: 0 }}
-                />
+            {/* Check In */}
+            <div style={{ padding: "16px 24px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                <Calendar size={12} color="#B85C38" />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Check In</span>
               </div>
+              <input
+                type="date"
+                value={form.checkIn}
+                onChange={(e) => setForm({ ...form, checkIn: e.target.value })}
+                style={{
+                  fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600,
+                  color: form.checkIn ? "#1A1A1A" : "#9CA3AF",
+                  border: "none", background: "none", outline: "none", width: "100%", padding: 0,
+                }}
+              />
+            </div>
 
-              <div style={{ height: "36px", backgroundColor: "#E8E4DC" }} />
+            <div style={{ height: "36px", backgroundColor: "#E8E4DC" }} />
 
-              {/* Check Out */}
-              <div style={{ padding: "18px 22px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px" }}>
-                  <Calendar size={13} color="#B85C38" />
-                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Check Out</span>
-                </div>
-                <input
-                  type="date"
-                  value={form.checkOut}
-                  onChange={(e) => setForm({ ...form, checkOut: e.target.value })}
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: form.checkOut ? "#1A1A1A" : "#9CA3AF", border: "none", background: "none", outline: "none", width: "100%", padding: 0 }}
-                />
+            {/* Check Out */}
+            <div style={{ padding: "16px 24px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                <Calendar size={12} color="#B85C38" />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#B85C38" }}>Check Out</span>
               </div>
+              <input
+                type="date"
+                value={form.checkOut}
+                onChange={(e) => setForm({ ...form, checkOut: e.target.value })}
+                style={{
+                  fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600,
+                  color: form.checkOut ? "#1A1A1A" : "#9CA3AF",
+                  border: "none", background: "none", outline: "none", width: "100%", padding: 0,
+                }}
+              />
+            </div>
 
-              <div style={{ height: "36px", backgroundColor: "#E8E4DC" }} />
-
-              {/* Search button */}
-              <div style={{ padding: "10px" }}>
-                <button
-                  onClick={handleSearch}
-                  style={{ backgroundColor: "#B85C38", color: "white", border: "none", borderRadius: "12px", padding: "15px 26px", cursor: "pointer", display: "flex", alignItems: "center", gap: "9px", fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 700, whiteSpace: "nowrap", transition: "all 0.2s", boxShadow: "0 2px 8px rgba(184,92,56,0.35)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#9A4D2F"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#B85C38"; e.currentTarget.style.transform = "translateY(0)"; }}
-                >
-                  <Search size={15} /> Search
-                </button>
-              </div>
+            {/* Button */}
+            <div style={{ padding: "8px 8px 8px 0" }}>
+              <button
+                className="hero-search-go"
+                onClick={handleSearch}
+                style={{
+                  backgroundColor: "#B85C38",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "12px",
+                  padding: "15px 26px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.2s",
+                  boxShadow: "0 2px 8px rgba(184,92,56,0.30)",
+                }}
+              >
+                <Search size={15} /> Search
+              </button>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Spacer for search bar */}
-      <div style={{ height: "72px" }} />
-
-      {/* ── STATS ── */}
-      <div style={{ ...OUTER, paddingTop: "8px", paddingBottom: "48px" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {stats.map((s, i) => (
-            <div key={s.label} style={{ display: "flex", alignItems: "center" }}>
-              <div>
-                <p style={{ fontFamily: "Fraunces, serif", fontSize: "28px", fontWeight: 700, color: "#1A1A1A", lineHeight: 1 }}>{s.value}</p>
-                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B", marginTop: "4px" }}>{s.label}</p>
-              </div>
-              {i < stats.length - 1 && <div style={{ width: "1px", height: "32px", backgroundColor: "#E8E4DC", margin: "0 36px" }} />}
-            </div>
-          ))}
-        </div>
-      </div>
+        {/* Bottom bleed — clean subtle edge, no washed-out band */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          height: "80px",
+          background: "linear-gradient(to top, rgba(238,242,247,0.95) 0%, rgba(238,242,247,0.4) 50%, transparent 100%)",
+          zIndex: 5, pointerEvents: "none",
+        }} />
+        {/* Warm accent line at the very bottom of the hero */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          height: "3px",
+          background: "linear-gradient(90deg, transparent 0%, #D4764E 20%, #B85C38 50%, #D4764E 80%, transparent 100%)",
+          zIndex: 6, pointerEvents: "none",
+          opacity: 0.5,
+        }} />
+      </section>
 
       {/* ── DESTINATION PILLS ── */}
       <div style={{ backgroundColor: "white", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC" }}>
@@ -340,7 +559,7 @@ export default function Hero() {
       </section>
 
       {/* ── WHY NEPALSTAY ── */}
-      <section style={{ backgroundColor: "#F2EDE8", padding: "80px 0" }}>
+      {/* <section style={{ backgroundColor: "#F2EDE8", padding: "80px 0" }}>
         <div ref={whyRef} className="reveal" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 64px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div>
@@ -383,7 +602,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
