@@ -1,8 +1,8 @@
-# Pahuna - Nepal Hotel Booking Platform
+# Pahuna - Hotel Booking Platform
 
 A full-featured hotel booking web application built in React, focused on Nepal's most remarkable travel destinations.
 
-## 📸 Pages
+## Pages
 - **Home** - Hero slideshow, destination grid, search bar
 - **Hotels** - Filter by destination, category, price, sort
 - **Hotel Detail** - Gallery, amenities, map, booking panel
@@ -13,7 +13,7 @@ A full-featured hotel booking web application built in React, focused on Nepal's
 - **Contact** - Form with FAQ
 - **404** - Custom not-found page
 
-## 🗂️ Destinations Covered
+## Destinations Covered
 Kathmandu, Pokhara, Chitwan, Nagarkot, Lumbini, Mustang,
 Ilam, Bhedetar, Basantapur, Tinjure, Dhankuta, Bandipur
 
