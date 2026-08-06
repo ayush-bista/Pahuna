@@ -44,7 +44,7 @@ export default function SignupPage() {
   const strengthLabel = ["", "Weak", "Good", "Strong"];
   const strengthColor = ["", "#EF4444", "#F59E0B", "#22C55E"];
 
-  const InputField = ({ icon: Icon, label, field, type, placeholder, showToggle, toggleState, onToggle, extraBottom }) => (
+  const renderInputField = ({ icon: Icon, label, field, type, placeholder, showToggle, toggleState, onToggle, extraBottom }) => (
     <div style={{ marginBottom: extraBottom || "20px" }}>
       <label style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#1A1A1A", display: "block", marginBottom: "8px" }}>
         {label}
@@ -111,18 +111,18 @@ export default function SignupPage() {
           </div>
 
           {/* Name */}
-          <InputField icon={User} label="Full name" field="name" type="text" placeholder="Aayush Bista" />
+          {renderInputField({ icon: User, label: "Full name", field: "name", type: "text", placeholder: "Aayush Bista" })}
 
           {/* Email */}
-          <InputField icon={Mail} label="Email address" field="email" type="email" placeholder="you@example.com" />
+          {renderInputField({ icon: Mail, label: "Email address", field: "email", type: "email", placeholder: "you@example.com" })}
 
           {/* Password */}
-          <InputField
-            icon={Lock} label="Password" field="password" type="password"
-            placeholder="Create a strong password"
-            showToggle onToggle={() => setShowPass(!showPass)} toggleState={showPass}
-            extraBottom="8px"
-          />
+          {renderInputField({
+            icon: Lock, label: "Password", field: "password", type: "password",
+            placeholder: "Create a strong password",
+            showToggle: true, onToggle: () => setShowPass(!showPass), toggleState: showPass,
+            extraBottom: "8px",
+          })}
 
           {/* Password strength */}
           {form.password.length > 0 && (
@@ -139,11 +139,11 @@ export default function SignupPage() {
           )}
 
           {/* Confirm password */}
-          <InputField
-            icon={Lock} label="Confirm password" field="confirm" type="password"
-            placeholder="Repeat your password"
-            showToggle onToggle={() => setShowConfirm(!showConfirm)} toggleState={showConfirm}
-          />
+          {renderInputField({
+            icon: Lock, label: "Confirm password", field: "confirm", type: "password",
+            placeholder: "Repeat your password",
+            showToggle: true, onToggle: () => setShowConfirm(!showConfirm), toggleState: showConfirm,
+          })}
 
           {/* Terms */}
           <div style={{ marginBottom: "24px" }}>
