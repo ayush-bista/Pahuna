@@ -7,10 +7,11 @@ import useReveal from "../../hooks/useReveal";
 const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", focus: "50% 56%", location: "Pokhara"},
-  { image: "https://i.pinimg.com/1200x/9a/f7/d7/9af7d7d1fae7cbe8d5da591c6aa52834.jpg", focus: "50% 38%", location: "Kathmandu"},
-  { image: "https://i.pinimg.com/1200x/2a/59/5a/2a595a028828845aebbe8d27b6e1e6a0.jpg", focus: "50% 28%", location: "Nagarkot"},
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", focus: "50% 46%", location: "Chitwan"},
+  { image: "https://plus.unsplash.com/premium_photo-1691735665916-cf31006dffe3?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", focus: "50% 38%", location: "Kathmandu"},
+  { image: "https://plus.unsplash.com/premium_photo-1697729690458-2d64ca777c04?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", focus: "50% 46%", location: "Chitwan"},
+  { image: "https://images.unsplash.com/photo-1716503191918-b811f0f9cdb1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", focus: "50% 56%", location: "Pokhara"},
+  { image: "https://images.unsplash.com/photo-1610428418346-535c21b8a678?q=80&w=2145&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", focus: "50% 28%", location: "Nagarkot"},
+  
   { image: "https://i.pinimg.com/1200x/0e/45/b7/0e45b76f1960fb97ef1e63d479cf281c.jpg", focus: "50% 42%", location: "Ilam"},
 ];
 
