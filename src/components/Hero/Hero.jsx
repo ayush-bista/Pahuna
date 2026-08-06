@@ -7,11 +7,11 @@ import useReveal from "../../hooks/useReveal";
 const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", location: "Pokhara", tagline: "Gateway to the Annapurnas" },
-  { image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=1920&q=90", location: "Kathmandu", tagline: "City of Temples" },
-  { image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1920&q=90", location: "Nagarkot", tagline: "Himalayan Panoramas" },
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", location: "Chitwan", tagline: "Jungle Safari Paradise" },
-  { image: "https://images.unsplash.com/photo-1563514227147-6d2af38dce6f?w=1920&q=90", location: "Ilam", tagline: "Nepal's Tea Capital" },
+  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", focus: "50% 56%", location: "Pokhara", tagline: "Gateway to the Annapurnas" },
+  { image: "https://i.pinimg.com/1200x/9a/f7/d7/9af7d7d1fae7cbe8d5da591c6aa52834.jpg", focus: "50% 38%", location: "Kathmandu", tagline: "City of Temples" },
+  { image: "https://i.pinimg.com/1200x/2a/59/5a/2a595a028828845aebbe8d27b6e1e6a0.jpg", focus: "50% 28%", location: "Nagarkot", tagline: "Himalayan Panoramas" },
+  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", focus: "50% 46%", location: "Chitwan", tagline: "Jungle Safari Paradise" },
+  { image: "https://i.pinimg.com/1200x/0e/45/b7/0e45b76f1960fb97ef1e63d479cf281c.jpg", focus: "50% 42%", location: "Ilam", tagline: "Nepal's Tea Capital" },
 ];
 
 function DestCard({ dest, height = "260px", large = false }) {
@@ -64,6 +64,14 @@ const heroCSS = `
 @keyframes heroSlowZoom {
   from { transform: scale(1); }
   to   { transform: scale(1.06); }
+}
+@keyframes heroSlideIn {
+  from { opacity: 0; transform: scale(1.12); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes heroSlideDrift {
+  0% { transform: scale(1.08) translate3d(0, 14px, 0); }
+  100% { transform: scale(1.14) translate3d(0, -10px, 0); }
 }
 @keyframes heroAccentLine {
   from { width: 0; opacity: 0; }
@@ -152,18 +160,28 @@ export default function Hero() {
               position: "absolute",
               inset: 0,
               opacity: slide === i ? 1 : 0,
-              transition: "opacity 1s ease-in-out",
+              transform: "scale(1)",
+              transition: "opacity 900ms ease-in-out",
               zIndex: 0,
+              overflow: "hidden",
             }}
           >
             <img
               src={s.image}
               alt={s.location}
               style={{
+                position: "absolute",
+                inset: 0,
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                animation: slide === i ? "heroSlowZoom 12s ease-out forwards" : "none",
+                objectPosition: s.focus || "center center",
+                opacity: slide === i ? 1 : 0,
+                transform: slide === i ? "scale(1.08)" : "scale(1.14)",
+                transition: "opacity 900ms ease, transform 1400ms cubic-bezier(0.22, 1, 0.36, 1)",
+                animation: slide === i ? "heroSlideDrift 12s ease-in-out forwards, heroSlideIn 900ms ease-out both" : "none",
+                filter: slide === i ? "saturate(1.05) contrast(1.02)" : "saturate(0.95)",
+                willChange: "transform, opacity",
               }}
             />
           </div>
@@ -240,62 +258,52 @@ export default function Hero() {
             <br />stay in Nepal
           </h1>
 
-          <div style={{
-            maxWidth: "560px",
+          {/* Sub text */}
+          <p style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "16px",
+            lineHeight: 1.75,
+            color: "rgba(255,255,255,0.93)",
+            maxWidth: "430px",
             marginBottom: "28px",
-            padding: "18px 20px",
-            borderRadius: "22px",
-            backgroundColor: "rgba(0,0,0,0.18)",
-            backdropFilter: "blur(12px)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            boxShadow: "0 14px 36px rgba(0,0,0,0.14)",
+            textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
             animation: "heroEnter 0.8s ease both 0.5s",
           }}>
-            {/* Sub text */}
-            <p style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: "16px",
-              lineHeight: 1.75,
-              color: "rgba(255,255,255,0.93)",
-              maxWidth: "490px",
-              marginBottom: "16px",
-              textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
-            }}>
-              Handpicked hotels across 12 destinations from Kathmandu's ancient temples to Ilam's misty tea gardens.
-            </p>
+            Handpicked hotels across 12 destinations from Kathmandu's ancient temples to Ilam's misty tea gardens.
+          </p>
 
-            {/* Quick info row */}
-            <div style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              flexWrap: "wrap",
-            }}>
-              {[
-                { icon: <Shield size={13} />, text: "Verified hotels" },
-                { icon: <Star size={13} />, text: "4.8★ avg rating" },
-                { icon: <Clock size={13} />, text: "Instant booking" },
-              ].map((item, idx) => (
-                <div
-                  key={item.text}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "7px",
-                    backgroundColor: "rgba(255,255,255,0.08)",
-                    borderRadius: "999px",
-                    padding: "7px 14px",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    animation: `heroBadgeFadeIn 0.5s ease both ${0.8 + idx * 0.1}s`,
-                  }}
-                >
-                  <span style={{ color: "#E8956C" }}>{item.icon}</span>
-                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.95)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{item.text}</span>
-                </div>
-              ))}
-            </div>
+          {/* Quick info row */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            animation: "heroEnter 0.7s ease both 0.65s",
+          }}>
+            {[
+              { icon: <Shield size={13} />, text: "Verified hotels" },
+              { icon: <Star size={13} />, text: "4.8★ avg rating" },
+              { icon: <Clock size={13} />, text: "Instant booking" },
+            ].map((item, idx) => (
+              <div
+                key={item.text}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  backgroundColor: "rgba(0,0,0,0.25)",
+                  backdropFilter: "blur(8px)",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  animation: `heroBadgeFadeIn 0.5s ease both ${0.8 + idx * 0.1}s`,
+                }}
+              >
+                <span style={{ color: "#E8956C" }}>{item.icon}</span>
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.95)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{item.text}</span>
+              </div>
+            ))}
           </div>
-          </div>
+        </div>
 
         {/* ── Slide arrows (left edge) ── */}
         <div style={{
