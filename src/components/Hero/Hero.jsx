@@ -7,11 +7,11 @@ import useReveal from "../../hooks/useReveal";
 const OUTER = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", focus: "50% 56%", location: "Pokhara", tagline: "Gateway to the Annapurnas" },
-  { image: "https://i.pinimg.com/1200x/9a/f7/d7/9af7d7d1fae7cbe8d5da591c6aa52834.jpg", focus: "50% 38%", location: "Kathmandu", tagline: "City of Temples" },
-  { image: "https://i.pinimg.com/1200x/2a/59/5a/2a595a028828845aebbe8d27b6e1e6a0.jpg", focus: "50% 28%", location: "Nagarkot", tagline: "Himalayan Panoramas" },
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", focus: "50% 46%", location: "Chitwan", tagline: "Jungle Safari Paradise" },
-  { image: "https://i.pinimg.com/1200x/0e/45/b7/0e45b76f1960fb97ef1e63d479cf281c.jpg", focus: "50% 42%", location: "Ilam", tagline: "Nepal's Tea Capital" },
+  { image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1920&q=90", focus: "50% 56%", location: "Pokhara"},
+  { image: "https://i.pinimg.com/1200x/9a/f7/d7/9af7d7d1fae7cbe8d5da591c6aa52834.jpg", focus: "50% 38%", location: "Kathmandu"},
+  { image: "https://i.pinimg.com/1200x/2a/59/5a/2a595a028828845aebbe8d27b6e1e6a0.jpg", focus: "50% 28%", location: "Nagarkot"},
+  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=90", focus: "50% 46%", location: "Chitwan"},
+  { image: "https://i.pinimg.com/1200x/0e/45/b7/0e45b76f1960fb97ef1e63d479cf281c.jpg", focus: "50% 42%", location: "Ilam"},
 ];
 
 function DestCard({ dest, height = "260px", large = false }) {
@@ -495,13 +495,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom bleed — clean subtle edge, no washed-out band */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0,
-          height: "80px",
-          background: "linear-gradient(to top, rgba(238,242,247,0.95) 0%, rgba(238,242,247,0.4) 50%, transparent 100%)",
-          zIndex: 5, pointerEvents: "none",
-        }} />
         {/* Warm accent line at the very bottom of the hero */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0,
