@@ -251,7 +251,7 @@ export default function Hero() {
             textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
             animation: "heroEnter 0.8s ease both 0.5s",
           }}>
-            Handpicked hotels across 12 destinations — from Kathmandu's ancient temples to Ilam's misty tea gardens.
+            Handpicked hotels across 12 destinations from Kathmandu's ancient temples to Ilam's misty tea gardens.
           </p>
 
           {/* Quick info row */}
