@@ -150,6 +150,7 @@ export default function Hero() {
         minHeight: "620px",
         maxHeight: "920px",
         overflow: "hidden",
+        backgroundColor: "#0B0D10",
       }}>
 
         {/* ── Background images (crossfade) ── */}
@@ -160,10 +161,11 @@ export default function Hero() {
               position: "absolute",
               inset: 0,
               opacity: slide === i ? 1 : 0,
-              transform: "scale(1)",
-              transition: "opacity 900ms ease-in-out",
+              transform: slide === i ? "scale(1.01) translate3d(0, 0, 0)" : "scale(1.05) translate3d(0, 4px, 0)",
+              transition: "opacity 1400ms ease-in-out, transform 2200ms cubic-bezier(0.25, 0.1, 0.25, 1)",
               zIndex: 0,
               overflow: "hidden",
+              backgroundColor: "#0B0D10",
             }}
           >
             <img
@@ -177,10 +179,10 @@ export default function Hero() {
                 objectFit: "cover",
                 objectPosition: s.focus || "center center",
                 opacity: slide === i ? 1 : 0,
-                transform: slide === i ? "scale(1.08)" : "scale(1.14)",
-                transition: "opacity 900ms ease, transform 1400ms cubic-bezier(0.22, 1, 0.36, 1)",
-                animation: slide === i ? "heroSlideDrift 12s ease-in-out forwards, heroSlideIn 900ms ease-out both" : "none",
-                filter: slide === i ? "saturate(1.05) contrast(1.02)" : "saturate(0.95)",
+                transform: slide === i ? "scale(1.045)" : "scale(1.08)",
+                transition: "opacity 1400ms ease-in-out, transform 2200ms cubic-bezier(0.25, 0.1, 0.25, 1), filter 1400ms ease-in-out",
+                filter: slide === i ? "saturate(1.05) contrast(1.02) brightness(0.99)" : "saturate(0.94) brightness(0.94)",
+                backfaceVisibility: "hidden",
                 willChange: "transform, opacity",
               }}
             />
