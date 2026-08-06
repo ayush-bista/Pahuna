@@ -312,7 +312,8 @@ export default function Hero() {
         <div style={{
           position: "absolute",
           right: "32px",
-          bottom: "180px",
+          top: "85%",
+          transform: "translateY(-50%)",
           zIndex: 15,
           display: "flex",
           flexDirection: "column",
