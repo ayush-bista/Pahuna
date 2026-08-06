@@ -240,52 +240,62 @@ export default function Hero() {
             <br />stay in Nepal
           </h1>
 
-          {/* Sub text */}
-          <p style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "16px",
-            lineHeight: 1.75,
-            color: "rgba(255,255,255,0.93)",
-            maxWidth: "430px",
+          <div style={{
+            maxWidth: "560px",
             marginBottom: "28px",
-            textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
+            padding: "18px 20px",
+            borderRadius: "22px",
+            backgroundColor: "rgba(0,0,0,0.18)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 14px 36px rgba(0,0,0,0.14)",
             animation: "heroEnter 0.8s ease both 0.5s",
           }}>
-            Handpicked hotels across 12 destinations from Kathmandu's ancient temples to Ilam's misty tea gardens.
-          </p>
+            {/* Sub text */}
+            <p style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "16px",
+              lineHeight: 1.75,
+              color: "rgba(255,255,255,0.93)",
+              maxWidth: "490px",
+              marginBottom: "16px",
+              textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 0px 3px rgba(0,0,0,0.3)",
+            }}>
+              Handpicked hotels across 12 destinations from Kathmandu's ancient temples to Ilam's misty tea gardens.
+            </p>
 
-          {/* Quick info row */}
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-            animation: "heroEnter 0.7s ease both 0.65s",
-          }}>
-            {[
-              { icon: <Shield size={13} />, text: "Verified hotels" },
-              { icon: <Star size={13} />, text: "4.8★ avg rating" },
-              { icon: <Clock size={13} />, text: "Instant booking" },
-            ].map((item, idx) => (
-              <div
-                key={item.text}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "7px",
-                  backgroundColor: "rgba(0,0,0,0.25)",
-                  backdropFilter: "blur(8px)",
-                  borderRadius: "999px",
-                  padding: "6px 14px",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  animation: `heroBadgeFadeIn 0.5s ease both ${0.8 + idx * 0.1}s`,
-                }}
-              >
-                <span style={{ color: "#E8956C" }}>{item.icon}</span>
-                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.95)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{item.text}</span>
-              </div>
-            ))}
+            {/* Quick info row */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              flexWrap: "wrap",
+            }}>
+              {[
+                { icon: <Shield size={13} />, text: "Verified hotels" },
+                { icon: <Star size={13} />, text: "4.8★ avg rating" },
+                { icon: <Clock size={13} />, text: "Instant booking" },
+              ].map((item, idx) => (
+                <div
+                  key={item.text}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "7px",
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                    borderRadius: "999px",
+                    padding: "7px 14px",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    animation: `heroBadgeFadeIn 0.5s ease both ${0.8 + idx * 0.1}s`,
+                  }}
+                >
+                  <span style={{ color: "#E8956C" }}>{item.icon}</span>
+                  <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.95)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+          </div>
 
         {/* ── Slide arrows (left edge) ── */}
         <div style={{
