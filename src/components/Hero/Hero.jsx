@@ -223,11 +223,11 @@ export default function Hero() {
 
           {/* Tag line */}
           <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            marginBottom: "18px",
-            animation: "heroEnter 0.7s ease both 0.2s",
+            // display: "flex",
+            // alignItems: "center",
+            // gap: "10px",
+            // marginBottom: "18px",
+            // animation: "heroEnter 0.7s ease both 0.2s",
           }}>
             <div style={{ width: "28px", height: "2px", backgroundColor: "#D4764E", animation: "heroAccentLine 0.6s ease both 0.4s" }} />
             <span style={{
