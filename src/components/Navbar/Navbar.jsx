@@ -78,14 +78,14 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", flexShrink: 0 }}>
-          <div style={{ width: "36px", height: "36px", backgroundColor: "#B85C38", borderRadius: "9px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(184,92,56,0.35)" }}>
+          {/* <div style={{ width: "36px", height: "36px", backgroundColor: "#B85C38", borderRadius: "9px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(184,92,56,0.35)" }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 17l4-8 4 4 3-6 4 10" />
             </svg>
-          </div>
+          </div> */}
           <div>
             <span style={{ fontFamily: "Fraunces, serif", fontSize: "19px", fontWeight: 600, color: "#1A1A1A", letterSpacing: "-0.3px" }}>
-              Nepal<span style={{ color: "#B85C38" }}>Stay</span>
+              Pahuna
             </span>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "9px", color: "#9CA3AF", letterSpacing: "2px", textTransform: "uppercase", lineHeight: 1, marginTop: "1px" }}>
               Himalayan Hotels
