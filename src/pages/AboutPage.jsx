@@ -115,8 +115,8 @@ export default function AboutPage() {
             </div>
             <div style={{ position: "relative" }}>
               <img
-                src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=85"
-                alt="Pokhara"
+                src="https://plus.unsplash.com/premium_photo-1691735665916-cf31006dffe3?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Kathmandu"
                 style={{ width: "100%", height: "480px", objectFit: "cover", borderRadius: "20px" }}
               />
               <div style={{ position: "absolute", bottom: "-20px", right: "-20px", backgroundColor: "white", borderRadius: "16px", padding: "20px 24px", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
