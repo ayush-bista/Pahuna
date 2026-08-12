@@ -5,40 +5,14 @@ import { Helmet } from "react-helmet-async";
 
 const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
-const team = [
-  {
-    name: "Aayush Bista",
-    role: "Founder • Product Designer • Developer",
-    location: "Kathmandu",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
-    bio: "I built Pahuna to make Nepal's best stays easier to discover, explore, and book with more intention.",
-    link: "https://ayushbista.me",
-  },
-  {
-    name: "The Pahuna Story",
-    role: "Built with local insight",
-    location: "Nepal",
-    image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80",
-    bio: "Every listing, route, and experience is shaped around real travel moments across the country.",
-    link: "https://ayushbista.me",
-  },
-  {
-    name: "Travel-first Design",
-    role: "Curated for discovery",
-    location: "Across Nepal",
-    image: "https://images.unsplash.com/photo-1517840901100-8179e982acb7?auto=format&fit=crop&w=800&q=80",
-    bio: "A cleaner, calmer booking journey for travelers who want more atmosphere, less friction.",
-    link: "https://ayushbista.me",
-  },
-  {
-    name: "Explore More",
-    role: "See the creator",
-    location: "Portfolio",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
-    bio: "Click any card to view my work and connect with me beyond this project.",
-    link: "https://ayushbista.me",
-  },
-];
+const creatorSpotlight = {
+  name: "Aayush Bista",
+  role: "Founder • Product Designer • Developer",
+  location: "Kathmandu, Nepal",
+  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80",
+  bio: "Pahuna started with one idea: make the best places to stay in Nepal feel as inspiring as the places themselves. I designed and built this experience to help travelers discover memorable stays with less friction and more soul.",
+  link: "https://ayushbista.me",
+};
 
 const values = [
   {
@@ -219,52 +193,69 @@ export default function AboutPage() {
       {/* TEAM */}
       <section style={{ padding: "80px 0" }}>
         <div style={WRAP}>
-          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "12px" }}>
-              The mind behind it
+              Creator spotlight
             </p>
             <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "40px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px" }}>
               Built by one traveler, for many more
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px" }}>
-            {team.map((member) => (
-              <a
-                key={member.name}
-                href={member.link}
-                target="_blank"
-                rel="noreferrer"
-                style={{ backgroundColor: "white", border: "1px solid #E8E4DC", borderRadius: "16px", overflow: "hidden", textDecoration: "none", display: "block", transition: "transform 0.2s ease, box-shadow 0.2s ease" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 16px 36px rgba(26,26,26,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <div style={{ height: "200px", overflow: "hidden" }}>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                  />
-                </div>
-                <div style={{ padding: "20px" }}>
-                  <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "18px", fontWeight: 400, color: "#1A1A1A", marginBottom: "4px" }}>{member.name}</h3>
-                  <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "#B85C38", marginBottom: "6px" }}>{member.role}</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "12px" }}>
-                    <MapPin size={12} color="#9CA3AF" />
-                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#9CA3AF" }}>{member.location}</span>
-                  </div>
-                  <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B", lineHeight: 1.65 }}>{member.bio}</p>
-                </div>
-              </a>
-            ))}
-          </div>
+
+          <a
+            href={creatorSpotlight.link}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.1fr 1.5fr",
+              backgroundColor: "white",
+              border: "1px solid #E8E4DC",
+              borderRadius: "26px",
+              overflow: "hidden",
+              textDecoration: "none",
+              boxShadow: "0 16px 46px rgba(26,26,26,0.06)",
+              transition: "transform 0.2s ease, box-shadow 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 22px 52px rgba(26,26,26,0.12)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 16px 46px rgba(26,26,26,0.06)";
+            }}
+          >
+            <div style={{ height: "100%", minHeight: "340px", overflow: "hidden" }}>
+              <img
+                src={creatorSpotlight.image}
+                alt={creatorSpotlight.name}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            <div style={{ padding: "44px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "14px" }}>
+                Founder
+              </p>
+              <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "38px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", marginBottom: "8px" }}>
+                {creatorSpotlight.name}
+              </h3>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#B85C38", marginBottom: "12px" }}>
+                {creatorSpotlight.role}
+              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "18px", color: "#6B6B6B" }}>
+                <MapPin size={14} />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px" }}>{creatorSpotlight.location}</span>
+              </div>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "22px" }}>
+                {creatorSpotlight.bio}
+              </p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", width: "fit-content", padding: "12px 18px", borderRadius: "999px", backgroundColor: "#1A1A1A", color: "white", fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600 }}>
+                View portfolio <ArrowRight size={14} />
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
