@@ -9,7 +9,7 @@ const creatorSpotlight = {
   name: "Aayush Bista",
   role: "Founder • Product Designer • Developer",
   location: "Kathmandu, Nepal",
-  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80",
+  image: "https://www.ayushbista.me/IMG_0646%20(2).jpg",
   bio: "Pahuna started with one idea: make the best places to stay in Nepal feel as inspiring as the places themselves. I designed and built this experience to help travelers discover memorable stays with less friction and more soul.",
   link: "https://ayushbista.me",
 };
