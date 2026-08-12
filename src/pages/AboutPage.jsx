@@ -7,32 +7,36 @@ const WRAP = { maxWidth: "1320px", margin: "0 auto", padding: "0 64px" };
 
 const team = [
   {
-    name: "Priya Shrestha",
-    role: "Co-founder & CEO",
+    name: "Aayush Bista",
+    role: "Founder • Product Designer • Developer",
     location: "Kathmandu",
-    image: "https://i.pravatar.cc/200?img=47",
-    bio: "Born in Bhaktapur, Priya spent 10 years in hospitality before founding Pahuna to make Nepal's best hotels discoverable to the world.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+    bio: "I built Pahuna to make Nepal's best stays easier to discover, explore, and book with more intention.",
+    link: "https://ayushbista.me",
   },
   {
-    name: "Rajan Tamang",
-    role: "Co-founder & CTO",
-    location: "Pokhara",
-    image: "https://i.pravatar.cc/200?img=12",
-    bio: "A trekking guide turned engineer, Rajan built the platform from scratch with a deep love for Nepal's landscapes and the people who call them home.",
+    name: "The Pahuna Story",
+    role: "Built with local insight",
+    location: "Nepal",
+    image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80",
+    bio: "Every listing, route, and experience is shaped around real travel moments across the country.",
+    link: "https://ayushbista.me",
   },
   {
-    name: "Sita Rai",
-    role: "Head of Hotel Partnerships",
-    location: "Chitwan",
-    image: "https://i.pravatar.cc/200?img=31",
-    bio: "Sita personally visits every property on our platform. If she wouldn't stay there herself, it doesn't make the list.",
+    name: "Travel-first Design",
+    role: "Curated for discovery",
+    location: "Across Nepal",
+    image: "https://images.unsplash.com/photo-1517840901100-8179e982acb7?auto=format&fit=crop&w=800&q=80",
+    bio: "A cleaner, calmer booking journey for travelers who want more atmosphere, less friction.",
+    link: "https://ayushbista.me",
   },
   {
-    name: "Bikash Limbu",
-    role: "Head of Design",
-    location: "Ilam",
-    image: "https://i.pravatar.cc/200?img=15",
-    bio: "Raised in the tea gardens of Ilam, Bikash brings an eye for beauty and detail that shapes every pixel of the Pahuna experience.",
+    name: "Explore More",
+    role: "See the creator",
+    location: "Portfolio",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+    bio: "Click any card to view my work and connect with me beyond this project.",
+    link: "https://ayushbista.me",
   },
 ];
 
@@ -217,15 +221,29 @@ export default function AboutPage() {
         <div style={WRAP}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "12px" }}>
-              The people behind it
+              The mind behind it
             </p>
             <h2 style={{ fontFamily: "Fraunces, serif", fontSize: "40px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px" }}>
-              Meet the team
+              Built by one traveler, for many more
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px" }}>
             {team.map((member) => (
-              <div key={member.name} style={{ backgroundColor: "white", border: "1px solid #E8E4DC", borderRadius: "16px", overflow: "hidden" }}>
+              <a
+                key={member.name}
+                href={member.link}
+                target="_blank"
+                rel="noreferrer"
+                style={{ backgroundColor: "white", border: "1px solid #E8E4DC", borderRadius: "16px", overflow: "hidden", textDecoration: "none", display: "block", transition: "transform 0.2s ease, box-shadow 0.2s ease" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 16px 36px rgba(26,26,26,0.08)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
                 <div style={{ height: "200px", overflow: "hidden" }}>
                   <img
                     src={member.image}
@@ -244,7 +262,7 @@ export default function AboutPage() {
                   </div>
                   <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B", lineHeight: 1.65 }}>{member.bio}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
