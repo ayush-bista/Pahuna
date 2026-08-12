@@ -208,15 +208,17 @@ export default function AboutPage() {
             rel="noreferrer"
             style={{
               display: "grid",
-              gridTemplateColumns: "1.08fr 1.42fr",
+              gridTemplateColumns: "0.95fr 1.35fr",
               background: "linear-gradient(135deg, #FFF7F2 0%, #FFFFFF 45%, #F5F0EC 100%)",
               border: "1px solid rgba(184, 92, 56, 0.16)",
-              borderRadius: "30px",
+              borderRadius: "24px",
               overflow: "hidden",
               textDecoration: "none",
-              boxShadow: "0 24px 70px rgba(26,26,26,0.08)",
+              boxShadow: "0 18px 50px rgba(26,26,26,0.07)",
               transition: "transform 0.25s ease, box-shadow 0.25s ease",
               position: "relative",
+              maxWidth: "980px",
+              margin: "0 auto",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-6px)";
@@ -227,38 +229,38 @@ export default function AboutPage() {
               e.currentTarget.style.boxShadow = "0 24px 70px rgba(26,26,26,0.08)";
             }}
           >
-            <div style={{ position: "relative", minHeight: "360px", overflow: "hidden" }}>
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.28))", zIndex: 1 }} />
+            <div style={{ position: "relative", minHeight: "300px", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.28))", zIndex: 1 }} />
               <img
                 src={creatorSpotlight.image}
                 alt={creatorSpotlight.name}
-                style={{ width: "100%", height: "100%", objectFit: "cover", filter: "saturate(0.9) contrast(1.05)" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", filter: "saturate(0.9) contrast(1.04)" }}
               />
-              <div style={{ position: "absolute", bottom: "24px", left: "24px", zIndex: 2, backgroundColor: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)", backdropFilter: "blur(8px)", borderRadius: "14px", padding: "10px 14px", color: "white" }}>
-                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", opacity: 0.8, margin: 0 }}>Nepal</p>
-                <p style={{ fontFamily: "Fraunces, serif", fontSize: "20px", margin: "4px 0 0", fontWeight: 500 }}>Travel-led design</p>
+              <div style={{ position: "absolute", bottom: "20px", left: "20px", zIndex: 2, backgroundColor: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)", backdropFilter: "blur(8px)", borderRadius: "12px", padding: "9px 12px", color: "white" }}>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", opacity: 0.8, margin: 0 }}>Nepal</p>
+                <p style={{ fontFamily: "Fraunces, serif", fontSize: "18px", margin: "4px 0 0", fontWeight: 500 }}>Travel-led design</p>
               </div>
             </div>
 
-            <div style={{ padding: "42px 40px 38px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
-              <div style={{ display: "inline-flex", alignItems: "center", width: "fit-content", padding: "8px 12px", borderRadius: "999px", backgroundColor: "#FDF0EB", color: "#B85C38", fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "18px" }}>
+            <div style={{ padding: "30px 30px 28px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", width: "fit-content", padding: "7px 11px", borderRadius: "999px", backgroundColor: "#FDF0EB", color: "#B85C38", fontFamily: "Inter, sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "14px" }}>
                 Founder
               </div>
-              <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(30px, 3vw, 42px)", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", marginBottom: "10px", lineHeight: 1.05 }}>
+              <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(24px, 2.4vw, 34px)", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", marginBottom: "8px", lineHeight: 1.08 }}>
                 {creatorSpotlight.name}
               </h3>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#B85C38", marginBottom: "10px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "#B85C38", marginBottom: "8px" }}>
                 {creatorSpotlight.role}
               </p>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "18px", color: "#6B6B6B" }}>
-                <MapPin size={14} />
-                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px" }}>{creatorSpotlight.location}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px", color: "#6B6B6B" }}>
+                <MapPin size={13} />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px" }}>{creatorSpotlight.location}</span>
               </div>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "26px", maxWidth: "560px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#4B4B4B", lineHeight: 1.7, marginBottom: "18px", maxWidth: "520px" }}>
                 {creatorSpotlight.bio}
               </p>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", width: "fit-content", padding: "14px 20px", borderRadius: "999px", background: "linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)", color: "white", fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, boxShadow: "0 12px 24px rgba(26,26,26,0.18)" }}>
-                View portfolio <ArrowRight size={15} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "9px", width: "fit-content", padding: "11px 18px", borderRadius: "999px", background: "linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)", color: "white", fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, boxShadow: "0 10px 20px rgba(26,26,26,0.18)" }}>
+                View portfolio <ArrowRight size={14} />
               </div>
             </div>
           </a>
