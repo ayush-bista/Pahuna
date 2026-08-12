@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     try {
-      const stored = localStorage.getItem("nepalstay_user");
+      const stored = localStorage.getItem("pahuna_user");
       return stored ? JSON.parse(stored) : null;
     } catch {
       return null;
@@ -14,19 +14,19 @@ export function AuthProvider({ children }) {
 
   const login = (userData) => {
     const u = { ...userData, loginTime: Date.now() };
-    localStorage.setItem("nepalstay_user", JSON.stringify(u));
+    localStorage.setItem("pahuna_user", JSON.stringify(u));
     setUser(u);
   };
 
   const signup = (userData) => {
     const u = { ...userData, joinedDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }), loginTime: Date.now() };
-    localStorage.setItem("nepalstay_user", JSON.stringify(u));
+    localStorage.setItem("pahuna_user", JSON.stringify(u));
     // Keep any existing bookings for this email
     setUser(u);
   };
 
   const logout = () => {
-    localStorage.removeItem("nepalstay_user");
+    localStorage.removeItem("pahuna_user");
     setUser(null);
   };
 

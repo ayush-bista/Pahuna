@@ -140,7 +140,7 @@ function BookingsTab({ bookings }) {
           </div>
           <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "24px", fontWeight: 300, color: "#1A1A1A", marginBottom: "10px" }}>No bookings yet</h3>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B6B6B", lineHeight: 1.7, maxWidth: "320px", margin: "0 auto 28px" }}>
-            When you book a hotel through NepalStay, your reservations will appear here.
+            When you book a hotel through Pahuna, your reservations will appear here.
           </p>
           <Link to="/hotels" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 24px", backgroundColor: "#1A1A1A", color: "white", borderRadius: "12px", fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#B85C38")}
@@ -316,7 +316,7 @@ function SettingsTab() {
         {[
           { key: "email", label: "Email notifications", desc: "Booking confirmations and updates" },
           { key: "sms", label: "SMS alerts", desc: "Text messages for check-in reminders" },
-          { key: "offers", label: "Special offers", desc: "Deals and promotions from NepalStay" },
+          { key: "offers", label: "Special offers", desc: "Deals and promotions from Pahuna" },
         ].map((item, i) => (
           <div key={item.key} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "16px", marginBottom: i < 2 ? "16px" : 0, borderBottom: i < 2 ? "1px solid #E8E4DC" : "none" }}>
             <div>

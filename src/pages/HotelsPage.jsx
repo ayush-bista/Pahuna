@@ -77,7 +77,7 @@ export default function HotelsPage() {
 
 
 <Helmet>
-  <title>Browse Hotels — NepalStay</title>
+  <title>Browse Hotels — Pahuna</title>
   <meta name="description" content="Filter and browse 85+ verified hotels across 12 Nepal destinations. Luxury, boutique, safari lodges and more." />
 </Helmet>
 

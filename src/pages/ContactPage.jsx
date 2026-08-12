@@ -20,7 +20,7 @@ const contactDetails = [
   {
     icon: <Mail size={20} />,
     label: "Email us",
-    lines: ["hello@nepalstay.com", "support@nepalstay.com"],
+    lines: ["hello@pahuna.com", "support@pahuna.com"],
   },
   {
     icon: <Clock size={20} />,
@@ -70,8 +70,8 @@ export default function ContactPage() {
 
 
 <Helmet>
-  <title>Contact — NepalStay</title>
-  <meta name="description" content="Get in touch with the NepalStay team for booking support, hotel partnerships, or general enquiries." />
+  <title>Contact — Pahuna</title>
+  <meta name="description" content="Get in touch with the Pahuna team for booking support, hotel partnerships, or general enquiries." />
 </Helmet>
 
 
@@ -242,7 +242,7 @@ export default function ContactPage() {
                     <MapPin size={20} color="white" fill="white" />
                   </div>
                   <div style={{ backgroundColor: "white", borderRadius: "10px", padding: "10px 16px", boxShadow: "0 2px 12px rgba(0,0,0,0.12)" }}>
-                    <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#1A1A1A" }}>NepalStay HQ</p>
+                    <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#1A1A1A" }}>Pahuna HQ</p>
                     <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B6B6B" }}>Thamel, Kathmandu</p>
                   </div>
                 </div>

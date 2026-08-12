@@ -11,7 +11,7 @@ const team = [
     role: "Co-founder & CEO",
     location: "Kathmandu",
     image: "https://i.pravatar.cc/200?img=47",
-    bio: "Born in Bhaktapur, Priya spent 10 years in hospitality before founding NepalStay to make Nepal's best hotels discoverable to the world.",
+    bio: "Born in Bhaktapur, Priya spent 10 years in hospitality before founding Pahuna to make Nepal's best hotels discoverable to the world.",
   },
   {
     name: "Rajan Tamang",
@@ -32,7 +32,7 @@ const team = [
     role: "Head of Design",
     location: "Ilam",
     image: "https://i.pravatar.cc/200?img=15",
-    bio: "Raised in the tea gardens of Ilam, Bikash brings an eye for beauty and detail that shapes every pixel of the NepalStay experience.",
+    bio: "Raised in the tea gardens of Ilam, Bikash brings an eye for beauty and detail that shapes every pixel of the Pahuna experience.",
   },
 ];
 
@@ -60,7 +60,7 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2019", event: "NepalStay founded in Kathmandu with 12 hotels" },
+  { year: "2019", event: "Pahuna founded in Kathmandu with 12 hotels" },
   { year: "2020", event: "Survived the pandemic by pivoting to domestic tourism" },
   { year: "2021", event: "Expanded to 6 destinations and 50+ hotels" },
   { year: "2023", event: "Crossed 25,000 happy guests and launched mobile app" },
@@ -76,8 +76,8 @@ export default function AboutPage() {
 
 
 <Helmet>
-  <title>About Us — NepalStay</title>
-  <meta name="description" content="Learn about NepalStay — built by Nepalis, for travellers who want to experience Nepal's finest hotels and hidden gems." />
+  <title>About Us — Pahuna</title>
+  <meta name="description" content="Learn about Pahuna — built by Nepalis, for travellers who want to experience Nepal's finest hotels and hidden gems." />
 </Helmet>
 
 
@@ -97,7 +97,7 @@ export default function AboutPage() {
                 <em style={{ color: "#B85C38" }}>better storytelling</em>
               </h1>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "16px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "16px" }}>
-                NepalStay was born from a simple frustration — finding a truly great hotel in Nepal
+                Pahuna was born from a simple frustration — finding a truly great hotel in Nepal
                 required knowing someone who knew someone. The best places were invisible online.
               </p>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "16px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "36px" }}>

@@ -33,7 +33,7 @@ export default function LoginPage() {
 
     setTimeout(() => {
       // Check if user exists in localStorage
-      const allKeys = Object.keys(localStorage).filter((k) => k.startsWith("nepalstay_registered_"));
+      const allKeys = Object.keys(localStorage).filter((k) => k.startsWith("pahuna_registered_"));
       const match = allKeys.find((k) => {
         try {
           const u = JSON.parse(localStorage.getItem(k));
@@ -72,7 +72,7 @@ export default function LoginPage() {
               <div style={{ width: "36px", height: "36px", backgroundColor: "#B85C38", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Mountain size={18} color="white" />
               </div>
-              <span style={{ fontFamily: "Fraunces, serif", fontSize: "20px", fontWeight: 600, color: "white" }}>Nepal<span style={{ color: "#F0A882" }}>Stay</span></span>
+              <span style={{ fontFamily: "Fraunces, serif", fontSize: "20px", fontWeight: 600, color: "white" }}>Pahuna</span>
             </div>
             <div>
               <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "12px" }}>
@@ -181,7 +181,7 @@ export default function LoginPage() {
 
           <div style={{ textAlign: "center" }}>
             <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B6B6B" }}>
-              New to NepalStay?{" "}
+              New to Pahuna?{" "}
               <Link to="/signup" style={{ color: "#B85C38", fontWeight: 600, textDecoration: "none" }}>Create a free account</Link>
             </p>
           </div>

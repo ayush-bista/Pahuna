@@ -7,7 +7,7 @@ const suggestions = [
   { label: "Browse all hotels", to: "/hotels", icon: <Search size={16} /> },
   { label: "Kathmandu hotels", to: "/hotels?destination=Kathmandu", icon: <MapPin size={16} /> },
   { label: "Pokhara hotels", to: "/hotels?destination=Pokhara", icon: <MapPin size={16} /> },
-  { label: "About NepalStay", to: "/about", icon: <Mountain size={16} /> },
+  { label: "About Pahuna", to: "/about", icon: <Mountain size={16} /> },
 ];
 
 export default function NotFoundPage() {

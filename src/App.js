@@ -63,7 +63,7 @@ export default function App() {
   return (
     <Router>
       <Helmet>
-        <title>NepalStay — Nepal's Hotel Booking Platform</title>
+        <title>Pahuna — Nepal's Hotel Booking Platform</title>
         <meta name="description" content="Discover and book handpicked hotels across Nepal's most extraordinary destinations." />
       </Helmet>
       <ScrollToTop />

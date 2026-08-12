@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const BookingsContext = createContext(null);
 
-const getKey = (email) => `nepalstay_bookings_${email}`;
+const getKey = (email) => `pahuna_bookings_${email}`;
 
 export function BookingsProvider({ children }) {
   const [, forceUpdate] = useState(0);

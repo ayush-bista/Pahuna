@@ -87,7 +87,7 @@ export default function SignupPage() {
 
 
 <Helmet>
-  <title>Create Account — NepalStay</title>
+  <title>Create Account — Pahuna</title>
 </Helmet>
 
 

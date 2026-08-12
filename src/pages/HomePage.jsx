@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>NepalStay — Find Hotels in Nepal</title>
+        <title>Pahuna — Find Hotels in Nepal</title>
         <meta name="description" content="Browse handpicked hotels across Nepal — Kathmandu, Pokhara, Chitwan, Ilam, Bhedetar, Basantapur, Tinjure, Mustang and more." />
       </Helmet>
       <main>

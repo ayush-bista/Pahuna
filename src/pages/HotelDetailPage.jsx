@@ -62,7 +62,7 @@ export default function HotelDetailPage() {
        
        
         <Helmet>
-  <title>{hotel.name} — NepalStay</title>
+  <title>{hotel.name} — Pahuna</title>
   <meta name="description" content={hotel.description} />
 </Helmet>
 
