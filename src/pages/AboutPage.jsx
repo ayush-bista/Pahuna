@@ -208,51 +208,57 @@ export default function AboutPage() {
             rel="noreferrer"
             style={{
               display: "grid",
-              gridTemplateColumns: "1.1fr 1.5fr",
-              backgroundColor: "white",
-              border: "1px solid #E8E4DC",
-              borderRadius: "26px",
+              gridTemplateColumns: "1.08fr 1.42fr",
+              background: "linear-gradient(135deg, #FFF7F2 0%, #FFFFFF 45%, #F5F0EC 100%)",
+              border: "1px solid rgba(184, 92, 56, 0.16)",
+              borderRadius: "30px",
               overflow: "hidden",
               textDecoration: "none",
-              boxShadow: "0 16px 46px rgba(26,26,26,0.06)",
-              transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              boxShadow: "0 24px 70px rgba(26,26,26,0.08)",
+              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+              position: "relative",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-4px)";
-              e.currentTarget.style.boxShadow = "0 22px 52px rgba(26,26,26,0.12)";
+              e.currentTarget.style.transform = "translateY(-6px)";
+              e.currentTarget.style.boxShadow = "0 30px 80px rgba(26,26,26,0.14)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 16px 46px rgba(26,26,26,0.06)";
+              e.currentTarget.style.boxShadow = "0 24px 70px rgba(26,26,26,0.08)";
             }}
           >
-            <div style={{ height: "100%", minHeight: "340px", overflow: "hidden" }}>
+            <div style={{ position: "relative", minHeight: "360px", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.28))", zIndex: 1 }} />
               <img
                 src={creatorSpotlight.image}
                 alt={creatorSpotlight.name}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", filter: "saturate(0.9) contrast(1.05)" }}
               />
+              <div style={{ position: "absolute", bottom: "24px", left: "24px", zIndex: 2, backgroundColor: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)", backdropFilter: "blur(8px)", borderRadius: "14px", padding: "10px 14px", color: "white" }}>
+                <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", opacity: 0.8, margin: 0 }}>Nepal</p>
+                <p style={{ fontFamily: "Fraunces, serif", fontSize: "20px", margin: "4px 0 0", fontWeight: 500 }}>Travel-led design</p>
+              </div>
             </div>
 
-            <div style={{ padding: "44px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#B85C38", marginBottom: "14px" }}>
+            <div style={{ padding: "42px 40px 38px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", width: "fit-content", padding: "8px 12px", borderRadius: "999px", backgroundColor: "#FDF0EB", color: "#B85C38", fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "18px" }}>
                 Founder
-              </p>
-              <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "38px", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", marginBottom: "8px" }}>
+              </div>
+              <h3 style={{ fontFamily: "Fraunces, serif", fontSize: "clamp(30px, 3vw, 42px)", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-1px", marginBottom: "10px", lineHeight: 1.05 }}>
                 {creatorSpotlight.name}
               </h3>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#B85C38", marginBottom: "12px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, color: "#B85C38", marginBottom: "10px" }}>
                 {creatorSpotlight.role}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "18px", color: "#6B6B6B" }}>
                 <MapPin size={14} />
                 <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px" }}>{creatorSpotlight.location}</span>
               </div>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "22px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#4B4B4B", lineHeight: 1.8, marginBottom: "26px", maxWidth: "560px" }}>
                 {creatorSpotlight.bio}
               </p>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", width: "fit-content", padding: "12px 18px", borderRadius: "999px", backgroundColor: "#1A1A1A", color: "white", fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600 }}>
-                View portfolio <ArrowRight size={14} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", width: "fit-content", padding: "14px 20px", borderRadius: "999px", background: "linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)", color: "white", fontFamily: "Inter, sans-serif", fontSize: "13px", fontWeight: 600, boxShadow: "0 12px 24px rgba(26,26,26,0.18)" }}>
+                View portfolio <ArrowRight size={15} />
               </div>
             </div>
           </a>
